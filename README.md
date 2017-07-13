@@ -1,3 +1,14 @@
+![Logo](admin/landroid-s.png)
+# ioBroker.landrois-s
+=================
+Not working jet
+
+## Changelog
+
+#### 0.0.1
+* (MeisterTR) initial release
+
+## License
 The MIT License (MIT)
 
 Copyright (c) 2017 @@Author@@ <@@email@@>
