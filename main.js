@@ -91,7 +91,7 @@ function startMower() {
       adapter.setState("mower.state",  {val: false, ack: true});
     }
 }
-function stoptMower() {
+function stopMower() {
     if(state ===7 && error ==0){
       landroid.sendMessage('{"cmd":3}');//"Back to home" code for mower
       adapter.log.info("Landroid going back home");
