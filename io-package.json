@@ -25,7 +25,7 @@
 		"mode": "daemon",
 		"icon": "landroid-s.png",
 		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.template/master/admin/template.png",
+		"extIcon": "https://github.com/MeisterTR/iobroker.landroid-s/blob/master/admin/landroid-s.png",
 		"keywords": [
 			"template",
 			"vis",
@@ -43,7 +43,8 @@
 	"native": {
 		"email": "max.mustermann@gmx.de",
 		"pwd": "PASSWORT",
-		"mac": "XX:XX:XX:XX:XX:XX"
+		"mac": "XX:XX:XX:XX:XX:XX",
+		"poll": "60"
 	},
 	"objects": [],
 	"instanceObjects": [
