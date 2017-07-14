@@ -25,15 +25,13 @@
 		"mode": "daemon",
 		"icon": "landroid-s.png",
 		"enabled": true,
-		"extIcon": "https://github.com/MeisterTR/iobroker.landroid-s/blob/master/admin/landroid-s.png",
+		"extIcon": "https://raw.githubusercontent.com/MeisterTR/iobroker.landroid-s/master/admin/landroid-s.png",
 		"keywords": [
-			"template",
-			"vis",
-			"GUI",
-			"graphical",
-			"scada"
+			"worx",
+			"landroid s",
+			"mower"
 		],
-		"readme": "https://github.com/ioBroker/ioBroker.template/blob/master/README.md",
+		"readme": "https://github.com/MeisterTR/iobroker.landroid-s/blob/master/README.md",
 		"loglevel": "info",
 		"type": "general",
 		"restartAdapters": [
