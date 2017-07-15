@@ -12,7 +12,7 @@ var ip, pin, data, getOptions, error, state;
 var firstSet = true;
 var landroid;
 
-var test = true; // State for create and send Testmessages
+var test = false; // State for create and send Testmessages
 data = landroidS;
 
 
