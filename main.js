@@ -44,18 +44,14 @@ adapter.on('objectChange', function(id, obj) {
 // is called if a subscribed state changes
 adapter.on('stateChange', function(id, state) {
   // Warning, state can be null if it was deleted
-  //if(!(obj.from === ("system.adapter."+ adapter.namespace))){
-  //  adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(obj));
-  //}
-  //adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
-  //adapter.log.info('stateChange ' +obj.from );
 
   // you can use the ack flag to detect if it is status (true) or command (false)
   if (state && !state.ack) {
     var command = id.split('.').pop();
 
-    adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
-    if (command == "state") {
+    adapter.log.debug('stateChange ' + id + ' ' + JSON.stringify(state));
+
+    if (command == "state") { //start/stop the mover
       if (state.val === true) {
         startMower();
       } else {
@@ -381,7 +377,7 @@ adapter.on('ready', function() {
 var updateListener = function(status) {
   if (status) { // We got some data from the Landroid
     data = status;
-    //adapter.log.info('config tedfghst1: '+ JSON.stringify(status));
+    adapter.log.debug('Rohdaten: '+ JSON.stringify(status));
 
     evaluateResponse();
   } else {
@@ -416,4 +412,5 @@ function main() {
 
   adapter.subscribeStates('*');
   setInterval(checkStatus, secs * 1000);
+//test
 }
