@@ -308,7 +308,7 @@ function evaluateCalendar(arr) {
 }
 
 function evaluateResponse() {
-    adapter.setState("lastsync", { val: new Date().toISOString(), ack: true });
+    //adapter.setState("lastsync", { val: new Date().toISOString(), ack: true });
     adapter.setState("firmware", { val: data.dat.fw, ack: true });
 
     evaluateCalendar(data.cfg.sc.d);
@@ -384,6 +384,6 @@ function main() {
     evaluateResponse();
 
     adapter.subscribeStates('*');
-    checkStatus();
+    //checkStatus();
     setInterval(checkStatus, secs * 1000);
 }
