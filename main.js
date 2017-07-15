@@ -384,5 +384,6 @@ function main() {
     evaluateResponse();
 
     adapter.subscribeStates('*');
+    checkStatus();
     setInterval(checkStatus, secs * 1000);
 }
