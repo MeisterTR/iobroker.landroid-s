@@ -437,10 +437,13 @@ function main() {
     adapter.log.debug('password were set to: ' + adapter.config.pwd);
     adapter.log.debug('MAC adress set to: ' + adapter.config.mac);
 
+    if(adapter.config.mac !== "XX:XX:XX:XX:XX:XX" && adapter.config.pwd !== "PASSWORT"){
     landroid.init(updateListener);
+    setInterval(checkStatus, secs * 1000);
+  }
     evaluateResponse();
 
     adapter.subscribeStates('*');
     //checkStatus();
-    setInterval(checkStatus, secs * 1000);
+
 }
