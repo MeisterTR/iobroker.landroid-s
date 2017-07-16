@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "0.1.1",
+		"version": "0.2.2",
 		"news": {
+			"0.2.2": {
+				"en": "suported changing mowing times",
+				"de": "Mähzeiten können geändert werden"
+			},
 			"0.1.1": {
 				"en": "add States",
 				"de": "Datenpunkte hinzugefügt",
@@ -180,9 +184,21 @@
 				"name": "Work time",
 				"type": "number",
 				"role": "value.interval",
-				"unit": "h",
+				"unit": "min",
 				"read": true,
 				"desc": "Decides for how long the mower will work each day"
+			},
+			"native": {}
+		},
+		{
+			"_id": "calendar.monday.borderCut",
+			"type": "state",
+			"common": {
+				"name": "Border cut",
+				"type": "boolean",
+				"role": "state",
+				"read": true,
+				"desc": "The mower cut border today"
 			},
 			"native": {}
 		},
@@ -214,9 +230,21 @@
 				"name": "Work time",
 				"type": "number",
 				"role": "value.interval",
-				"unit": "h",
+				"unit": "min.",
 				"read": true,
 				"desc": "Decides for how long the mower will work each day"
+			},
+			"native": {}
+		},
+		{
+			"_id": "calendar.tuesday.borderCut",
+			"type": "state",
+			"common": {
+				"name": "Border cut",
+				"type": "boolean",
+				"role": "state",
+				"read": true,
+				"desc": "The mower cut border today"
 			},
 			"native": {}
 		},
@@ -248,9 +276,21 @@
 				"name": "Work time",
 				"type": "number",
 				"role": "value.interval",
-				"unit": "h",
+				"unit": "min.",
 				"read": true,
 				"desc": "Decides for how long the mower will work each day"
+			},
+			"native": {}
+		},
+		{
+			"_id": "calendar.wednesday.borderCut",
+			"type": "state",
+			"common": {
+				"name": "Border cut",
+				"type": "boolean",
+				"role": "state",
+				"read": true,
+				"desc": "The mower cut border today"
 			},
 			"native": {}
 		},
@@ -282,9 +322,21 @@
 				"name": "Work time",
 				"type": "number",
 				"role": "value.interval",
-				"unit": "h",
+				"unit": "min.",
 				"read": true,
 				"desc": "Decides for how long the mower will work each day"
+			},
+			"native": {}
+		},
+		{
+			"_id": "calendar.thurstday.borderCut",
+			"type": "state",
+			"common": {
+				"name": "Border cut",
+				"type": "boolean",
+				"role": "state",
+				"read": true,
+				"desc": "The mower cut border today"
 			},
 			"native": {}
 		},
@@ -316,9 +368,21 @@
 				"name": "Work time",
 				"type": "number",
 				"role": "value.interval",
-				"unit": "h",
+				"unit": "min.",
 				"read": true,
 				"desc": "Decides for how long the mower will work each day"
+			},
+			"native": {}
+		},
+		{
+			"_id": "calendar.friday.borderCut",
+			"type": "state",
+			"common": {
+				"name": "Border cut",
+				"type": "boolean",
+				"role": "state",
+				"read": true,
+				"desc": "The mower cut border today"
 			},
 			"native": {}
 		},
@@ -350,9 +414,21 @@
 				"name": "Work time",
 				"type": "number",
 				"role": "value.interval",
-				"unit": "h",
+				"unit": "min.",
 				"read": true,
 				"desc": "Decides for how long the mower will work each day"
+			},
+			"native": {}
+		},
+		{
+			"_id": "calendar.saturday.borderCut",
+			"type": "state",
+			"common": {
+				"name": "Border cut",
+				"type": "boolean",
+				"role": "state",
+				"read": true,
+				"desc": "The mower cut border today"
 			},
 			"native": {}
 		},
@@ -384,9 +460,21 @@
 				"name": "Work time",
 				"type": "number",
 				"role": "value.interval",
-				"unit": "h",
+				"unit": "min.",
 				"read": true,
 				"desc": "Decides for how long the mower will work each day"
+			},
+			"native": {}
+		},
+		{
+			"_id": "calendar.sunday.borderCut",
+			"type": "state",
+			"common": {
+				"name": "Border cut",
+				"type": "boolean",
+				"role": "state",
+				"read": true,
+				"desc": "The mower cut border today"
 			},
 			"native": {}
 		}

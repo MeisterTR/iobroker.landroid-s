@@ -12,7 +12,8 @@ var ip, pin, data, getOptions, error, state;
 var firstSet = true;
 var landroid;
 
-var test = false; // State for create and send Testmessages
+var weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+var test = true; // State for create and send Testmessages
 data = landroidS;
 
 
@@ -53,6 +54,10 @@ adapter.on('stateChange', function (id, state) {
             landroid.sendMessage('{"rd":' + val + '}');
             adapter.log.info("Changed time wait after rain to:" + val);
         }
+        else if ((command === "borderCut")||(command === "startTime")||(command === "workTime")) {
+            adapter.log.info("test cfgs: ");
+            changeMowerCfg(id,state.val);
+        }
     }
 });
 
@@ -68,6 +73,49 @@ adapter.on('message', function (obj) {
         }
     }
 });
+function changeMowerCfg(id, value) {
+  var val = value;
+  var sval ;
+  var message= data.cfg.sc.d; // set aktual values
+  var dayID = weekday.indexOf(id.split('.')[3]);
+  var valID = ["startTime","workTime","borderCut"].indexOf(id.split('.')[4]);
+
+  try{
+    if(valID ===2 ){
+      sval = (valID ===2 && val === true) ? 1 : 0;
+    }
+    else if(valID ===0){
+        var h = val.split(':')[0];
+        var m = val.split(':')[1];
+        adapter.log.info("h: "+ h +" m: "+ m );
+        if(h >=0 && h<=23 && m>=0 && m <=59){
+            sval = val;
+        }
+        else adapter.log.error('Time out of range: e.g "10:00"');
+    }
+    else if(valID ===1 ){
+      if(val >=0 && val <= 720){
+          sval = val;
+      }
+      else  adapter.log.error('Time out of range 0 min < time < 720 min.');
+
+    }
+    else adapter.log.error('Something went wrong while setting new mower times');
+  }
+  catch(e){
+    adapter.log.error("Error while setting mowers config: "+ e);
+  }
+
+  if(sval){
+    message[dayID][valID] = sval;
+    adapter.log.info("Mow time change to: "+ JSON.stringify(message));
+    landroid.sendMessage('{"sc":{"d":'+JSON.stringify(message)+'}}');
+
+  }
+  adapter.log.info("test cfg: "+ dayID +" valID: "+ valID +" val: "+ val +" sval: "+ sval);
+
+}
+
 
 function startMower() {
     if (state === 1 && error == 0) {
@@ -299,10 +347,13 @@ function procedeLandroidS() {
 
 function evaluateCalendar(arr) {
     if (arr) {
-        var weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
         for (var i = 0; i < weekday.length; i++) {
             adapter.setState("calendar." + weekday[i] + ".startTime", { val: arr[i][0], ack: true });
             adapter.setState("calendar." + weekday[i] + ".workTime", { val: arr[i][1], ack: true });
+            adapter.setState("calendar." + weekday[i] + ".borderCut", { val: (arr[i][2] && arr[i][2]===1 ? true : false), ack: true });
+
+
         }
     }
 }
@@ -335,7 +386,7 @@ function setStates() {
     state = (data.dat && data.dat.ls ? data.dat.ls : 0);
     error = (data.dat && data.dat.le ? data.dat.le : 0);
 
-    if (state === 7 && error === 0) {
+    if ((state === 7 || state=== 9 ) && error === 0) {
         adapter.setState("mower.state", { val: true, ack: true });
     } else {
         adapter.setState("mower.state", { val: false, ack: true });

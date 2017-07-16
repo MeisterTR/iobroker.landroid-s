@@ -1,15 +1,21 @@
 ![Logo](admin/landroid-s.png)
 # ioBroker.landrois-s
-Dieser Adapter verbindet Iobroker mit deinem Landroid S Modell 2017.
+Dieser Adapter verbindet Iobroker mit deinem Landroid S Modell 2017
 Es werden Temperaturen, Mähzeiten, Akkustand und diverse weitere Daten ausgelesen
 Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geändert werden.
 
 ## Installation
+
+### Wechsel von 0.1.X auf 0.2.X
+Bitte adapter vor Update deinstallieren, da einige Objekte erst bei der Insatallation angelegt werden.
+
 Bei der Insatallation unter Windows muss zusätzlich noch open-ssl installiert werden.Und ggf. der Pfad in lib/landroid-cloud.js geändert werden (wird noch geändert)
 
 ## Changelog
 
-#### 0.1.1
+#### 0.2.2
+* (MeisterTR) supported change of mowing times and error catching
+#### 0.1.2
 * (MeisterTR) add moving data
 #### 0.0.1
 * (MeisterTR) initial release
