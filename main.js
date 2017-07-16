@@ -418,7 +418,13 @@ function checkStatus() {
 function main() {
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
-    landroid = new LandroidCloud(adapter);
+    if(adapter.config.mac !== "XX:XX:XX:XX:XX:XX" && adapter.config.pwd !== "PASSWORT"){
+      landroid = new LandroidCloud(adapter);
+    }
+    else{
+      adapter.log.error("Bitte email, Passwort und Mac ausfüllen");
+    }
+
 
     if (firstSet) procedeLandroidS();
 
