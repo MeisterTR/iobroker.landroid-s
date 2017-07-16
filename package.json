@@ -9,9 +9,9 @@
 		"Smart Home",
 		"home automation"
 	],
-	"homepage": "https://github.com/ioBroker/ioBroker.template",
+	"homepage": "https://github.com/MeisterTR/iobroker.landroid-s",
 	"bugs": {
-		"url": "https://github.com/ioBroker/ioBroker.template/issues"
+		"url": "https://github.com/MeisterTR/iobroker.landroid-s/issues"
 	},
 	"license": "MIT",
 	"author": {
@@ -27,7 +27,7 @@
 	"main": "main.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ioBroker/ioBroker.template"
+		"url": "https://github.com/MeisterTR/iobroker.landroid-s"
 	},
 	"scripts": {
 		"test": "node node_modules/mocha/bin/mocha"
