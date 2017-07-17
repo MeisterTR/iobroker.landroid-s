@@ -1,7 +1,9 @@
 ![Logo](admin/landroid-s.png)
 # ioBroker.landrois-s
 =============
+
 **Tests:** Linux/Mac: [![Travis-CI](https://api.travis-ci.org/MeisterTR/iobroker.landroid-s.svg?branch=master)](https://travis-ci.org/MeisterTR/iobroker.landroid-s)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/MeisterTR/iobroker.landroid-s?branch=master&svg=true)](https://ci.appveyor.com/project/MeisterTR/iobroker-landroid-s/)
 
 
 Dieser Adapter verbindet Iobroker mit deinem Landroid S Modell 2017
