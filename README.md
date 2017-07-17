@@ -1,5 +1,9 @@
 ![Logo](admin/landroid-s.png)
 # ioBroker.landrois-s
+=============
+**Tests:** Linux/Mac: [![Travis-CI](https://api.travis-ci.org/MeisterTR/iobroker.landroid-s.svg?branch=master)](https://travis-ci.org/MeisterTR/iobroker.landroid-s)
+
+
 Dieser Adapter verbindet Iobroker mit deinem Landroid S Modell 2017
 Es werden Temperaturen, Mähzeiten, Akkustand und diverse weitere Daten ausgelesen
 Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geändert werden.
