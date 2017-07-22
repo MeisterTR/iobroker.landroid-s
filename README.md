@@ -1,6 +1,8 @@
 ![Logo](admin/landroid-s.png)
-# ioBroker.landrois-s
+ioBroker.landrois-s
 =============
+
+[![bitHound Overall Score](https://www.bithound.io/github/MeisterTR/iobroker.landroid-s/badges/score.svg)](https://www.bithound.io/github/MeisterTR/iobroker.landroid-s)
 
 **Tests:** Linux/Mac: [![Travis-CI](https://api.travis-ci.org/MeisterTR/iobroker.landroid-s.svg?branch=master)](https://travis-ci.org/MeisterTR/iobroker.landroid-s)
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/MeisterTR/iobroker.landroid-s?branch=master&svg=true)](https://ci.appveyor.com/project/MeisterTR/iobroker-landroid-s/)
@@ -11,14 +13,23 @@ Es werden Temperaturen, Mähzeiten, Akkustand und diverse weitere Daten ausgeles
 Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geändert werden.
 
 ## Installation
+Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von diesem Adapter nicht mehr unterstüztz.
+
+Bei der Insatallation unter Windows muss zusätzlich noch open-ssl installiert werden.Und ggf. der Pfad in lib/landroid-cloud.js geändert werden (wird noch geändert)
+
+## Einstellungen
+- Bei email und Passwort müssen die Daten eingeben werden, mit denen man bei worx registriert ist.
+- Die Mac Adresse findet man, wenn man in der App auf erweiterte Einstellungen geht.
+- Der Intervall ist der Abstand in dem die Werte aktualisiert werden.  Dies ist aber nur interessant für den Akkustand und andere, da der Roboter bei wichtigen Ereignissen (Error oder Mähen) selber nachrichten an den Adapter schickt.
 
 ### Wechsel von 0.1.X auf 0.2.X
 Bitte adapter vor Update deinstallieren, da einige Objekte erst bei der Insatallation angelegt werden.
 
-Bei der Insatallation unter Windows muss zusätzlich noch open-ssl installiert werden.Und ggf. der Pfad in lib/landroid-cloud.js geändert werden (wird noch geändert)
 
 ## Changelog
 
+#### 0.2.3
+* (MeisterTR) add areas, suporting change areas
 #### 0.2.2
 * (MeisterTR) supported change of mowing times and error catching
 #### 0.1.2

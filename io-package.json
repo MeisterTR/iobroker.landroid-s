@@ -1,9 +1,9 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "0.2.2",
+		"version": "0.2.3",
 		"news": {
-			"0.2.2": {
+			"0.2.3": {
 				"en": "suported changing mowing times",
 				"de": "Mähzeiten können geändert werden"
 			},
@@ -51,7 +51,26 @@
 	"objects": [],
 	"instanceObjects": [
 		{
-			"_id": "firmware",
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "If connected to CUL",
+				"type": "boolean",
+				"read": true
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.firmware",
 			"type": "state",
 			"common": {
 				"name": "Firmware Version",
@@ -68,44 +87,6 @@
 			"common": {
 				"name": "mower",
 				"role": "info"
-			},
-			"native": {}
-		},
-		{
-			"_id": "mower.connected",
-			"type": "state",
-			"common": {
-				"name": "Landroid connected",
-				"type": "boolean",
-				"role": "indicator.connected",
-				"read": true,
-				"desc": "Is Landroid mower connected?"
-			},
-			"native": {}
-		},
-		{
-			"_id": "mower.start",
-			"type": "state",
-			"common": {
-				"name": "Start Landroid",
-				"type": "boolean",
-				"role": "button",
-				"read": true,
-				"write": true,
-				"desc": "Start Landroid"
-			},
-			"native": {}
-		},
-		{
-			"_id": "mower.stop",
-			"type": "state",
-			"common": {
-				"name": "Stop Landroid",
-				"type": "boolean",
-				"role": "button",
-				"read": true,
-				"write": true,
-				"desc": "Stop Landroid"
 			},
 			"native": {}
 		},
@@ -132,18 +113,6 @@
 				"unit": "min",
 				"read": true,
 				"desc": "Time to wait after rain, in minutes"
-			},
-			"native": {}
-		},
-		{
-			"_id": "mower.areasUse",
-			"type": "state",
-			"common": {
-				"name": "Number of areas",
-				"type": "number",
-				"role": "value",
-				"read": true,
-				"desc": "Number of areas in use"
 			},
 			"native": {}
 		},
@@ -329,7 +298,7 @@
 			"native": {}
 		},
 		{
-			"_id": "calendar.thurstday.borderCut",
+			"_id": "calendar.thursday.borderCut",
 			"type": "state",
 			"common": {
 				"name": "Border cut",

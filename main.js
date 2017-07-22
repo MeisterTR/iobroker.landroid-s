@@ -1,6 +1,6 @@
 /* jshint -W097 */ // jshint strict:false
 /*jslint node: true */
-"use strict";
+ "use strict";
 
 // you have to require the utils module and call adapter function
 var utils = require(__dirname + '/lib/utils'); // Get common adapter utils
@@ -9,11 +9,14 @@ var LandroidCloud = require(__dirname + '/lib/landroid-cloud');
 var landroidS = require(__dirname + '/responses/landroid-s.json');
 
 var ip, pin, data, getOptions, error, state;
-var firstSet = true;
 var landroid;
 
+var connected = false;
+var pingTimeout = null;
+var firstSet = true;
 var weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 var test = true; // State for create and send Testmessages
+var areas =[];
 data = landroidS;
 
 
@@ -55,8 +58,10 @@ adapter.on('stateChange', function (id, state) {
             adapter.log.info("Changed time wait after rain to:" + val);
         }
         else if ((command === "borderCut")||(command === "startTime")||(command === "workTime")) {
-            adapter.log.info("test cfgs: ");
             changeMowerCfg(id,state.val);
+        }
+        else if ((command === "area_1") || (command === "area_2") || (command === "area_3") || (command === "area_4") ) {
+            changeMowerArea(id,state.val);
         }
     }
 });
@@ -115,6 +120,26 @@ function changeMowerCfg(id, value) {
   adapter.log.info("test cfg: "+ dayID +" valID: "+ valID +" val: "+ val +" sval: "+ sval);
 
 }
+function changeMowerArea(id, value){
+  var val = value;
+  var message= data.cfg.mz; // set aktual values
+  var areaID = (id.split('_').pop())-1;
+
+  try {
+    if (!isNaN(val) && val >= 0 && val <=500){
+      message[areaID] = val;
+      landroid.sendMessage('{"mz":'+JSON.stringify(message)+'}');
+      adapter.log.info("Change Area "+(areaID +1)+ " : "+ JSON.stringify(message));
+    }
+    else{
+      adapter.log.error("Area Value ist not correct, please type in a val between 0 and 500");
+      adapter.setState("areas.area_"+(areaID +1), { val: (data.cfg.mz && data.cfg.mz[areaID] ? data.cfg.mz[areaID] : 0), ack: true });
+    }
+  }
+  catch (e) {
+    adapter.log.error("Error while setting mowers areas: "+ e);
+  }
+}
 
 
 function startMower() {
@@ -146,14 +171,16 @@ function stopMower() {
 function procedeLandroidS() {
     var Button;
     if (true) {
-        adapter.deleteState("landroid-s.0", "mower", "start");
-        adapter.deleteState("landroid-s.0", "mower", "stop");
 
         //delete Teststates
         if (!test) {
-            adapter.deleteState("landroid-s.0", "mower", "testsend");
-            adapter.deleteState("landroid-s.0", "mower", "testresponse");
+            adapter.deleteState(adapter.namespace, "mower", "testsend");
+            adapter.deleteState(adapter.namespace, "mower", "testresponse");
         }
+        //adapter.createChannel(adapter.namespace, "areas", {
+        //  name: "mower areas"
+        //});
+
 
         adapter.setObjectNotExists('mower.state', {
             type: 'state',
@@ -316,6 +343,75 @@ function procedeLandroidS() {
         },
         native: {}
     });
+
+    // Values for areas
+
+    adapter.setObjectNotExists('areas.startSequence', {
+        type: 'state',
+        common: {
+            name: "Start sequence",
+            type: "sting",
+            read: true,
+            write: true,
+            desc: "Sequence of area to start from"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('areas.area_1', {
+        type: 'state',
+        common: {
+            name: "Area 1",
+            type: "number",
+            role: "value",
+            unit: "m",
+            read: true,
+            write: true,
+            desc: "Distance from Start point for area 1"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('areas.area_2', {
+        type: 'state',
+        common: {
+            name: "Area 2",
+            type: "number",
+            role: "value",
+            unit: "m",
+            read: true,
+            write: true,
+            desc: "Distance from Start point for area 2"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('areas.area_3', {
+        type: 'state',
+        common: {
+            name: "Area 3",
+            type: "number",
+            role: "value",
+            unit: "m",
+            read: true,
+            write: true,
+            desc: "Distance from Start point for area 3"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('areas.area_4', {
+        type: 'state',
+        common: {
+            name: "Area 4",
+            type: "number",
+            role: "value",
+            unit: "m",
+            read: true,
+            write: true,
+            desc: "Distance from Start point for area 4"
+        },
+        native: {}
+    });
+
+
+
     //States for testing
     if (test) {
         adapter.setObjectNotExists('mower.testsend', {
@@ -360,19 +456,20 @@ function evaluateCalendar(arr) {
 
 function evaluateResponse() {
     //adapter.setState("lastsync", { val: new Date().toISOString(), ack: true });
-    adapter.setState("firmware", { val: data.dat.fw, ack: true });
+    adapter.setState("info.firmware", { val: data.dat.fw, ack: true });
 
     evaluateCalendar(data.cfg.sc.d);
 
     adapter.setState("mower.waitRain", { val: data.cfg.rd, ack: true });
     adapter.setState("mower.batteryState", { val: data.dat.bt.p, ack: true });
-    adapter.setState("mower.areasUse", { val: (data.cfg.mz[0] + data.cfg.mz[1] + data.cfg.mz[2] + data.cfg.mz[3]), ack: true });
+  
 
     setStates();
 }
 
 function setStates() {
     //landroid S set states
+    var sequence=[];
 
     adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? Math.round(data.dat.st.wt / 6) / 10 : null), ack: true });
     adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? Math.round(data.dat.st.d / 100) / 10 : null), ack: true });
@@ -382,6 +479,19 @@ function setStates() {
     adapter.setState("mower.batteryTemterature", { val: (data.dat.bt && data.dat.bt.t ? data.dat.bt.t : null), ack: true });
     adapter.setState("mower.error", { val: (data.dat && data.dat.le ? data.dat.le : 0), ack: true });
     adapter.setState("mower.status", { val: (data.dat && data.dat.ls ? data.dat.ls : 0), ack: true });
+
+    // sort Areas
+    adapter.setState("areas.area_1", { val: (data.cfg.mz && data.cfg.mz[0] ? data.cfg.mz[0] : 0), ack: true });
+    adapter.setState("areas.area_2", { val: (data.cfg.mz && data.cfg.mz[1] ? data.cfg.mz[1] : 0), ack: true });
+    adapter.setState("areas.area_3", { val: (data.cfg.mz && data.cfg.mz[2] ? data.cfg.mz[2] : 0), ack: true });
+    adapter.setState("areas.area_4", { val: (data.cfg.mz && data.cfg.mz[3] ? data.cfg.mz[3] : 0), ack: true });
+    areas= data.cfg.mz;
+
+    for (var i = 0; i < data.cfg.mzv.length; i++) {
+    //  adapter.setState("areas.startSequence", { val: data.cfg.mzv[i], ack: true });
+      sequence.push(data.cfg.mzv[i]);
+    }
+    adapter.setState("areas.startSequence", { val: (sequence), ack: true });
 
     state = (data.dat && data.dat.ls ? data.dat.ls : 0);
     error = (data.dat && data.dat.le ? data.dat.le : 0);
@@ -403,6 +513,13 @@ adapter.on('ready', function () {
 //Autoupdate Push
 var updateListener = function (status) {
     if (status) { // We got some data from the Landroid
+      clearTimeout(pingTimeout);
+      pingTimeout = null;
+      if (!connected) {
+        connected = true;
+        adapter.log.info('Connected to mower');
+        adapter.setState('info.connection', true, true);
+      }
         data = status; // Set new Data to var data
         adapter.setState("mower.testresponse", { val: JSON.stringify(status), ack: true });
         evaluateResponse();
@@ -412,6 +529,14 @@ var updateListener = function (status) {
 };
 
 function checkStatus() {
+    pingTimeout = setTimeout(function() {
+      pingTimeout = null;
+      if (connected) {
+        connected = false;
+        adapter.log.info('Disconnect from mower');
+        adapter.setState('info.connection', false, true);
+      }
+    }, 3000);
     landroid.sendMessage('{}');
 }
 

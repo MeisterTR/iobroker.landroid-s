@@ -15,13 +15,13 @@
 	},
 	"license": "MIT",
 	"author": {
-		"name": "@@Author@@",
-		"email": "@@email@@"
+		"name": "MeisterTR",
+		"email": "meistertr.smarthome@gmail.com"
 	},
 	"contributors": [
 		{
-			"name": "@@Author@@",
-			"email": "@@email@@"
+			"name": "MeisterTR",
+			"email": "meistertr.smarthome@gmail.com"
 		}
 	],
 	"main": "main.js",
