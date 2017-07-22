@@ -1,6 +1,6 @@
 {
 	"name": "iobroker.landroid-s",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Control your Landroid S (2017)",
 	"keywords": [
 		"ioBroker",
@@ -49,4 +49,3 @@
 		"chai": "^3.4.1"
 	},
 	"readmeFilename": "README.md"
-}
