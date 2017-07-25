@@ -15,7 +15,7 @@ var connected = false;
 var pingTimeout = null;
 var firstSet = true;
 var weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-var test = true; // State for create and send Testmessages
+var test = false; // State for create and send Testmessages
 var areas = [];
 data = landroidS;
 
