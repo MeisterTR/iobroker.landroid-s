@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "0.2.3",
+		"version": "0.2.5",
 		"news": {
+			"0.2.5": {
+				"en": "every comnfig parameter is configureable",
+				"de": "Alle unterstützten Parameter können geändert werden"
+			},
 			"0.2.3": {
 				"en": "suported changing mowing times",
 				"de": "Mähzeiten können geändert werden"

@@ -1,6 +1,6 @@
 /* jshint -W097 */ // jshint strict:false
 /*jslint node: true */
- "use strict";
+"use strict";
 
 // you have to require the utils module and call adapter function
 var utils = require(__dirname + '/lib/utils'); // Get common adapter utils
@@ -16,7 +16,7 @@ var pingTimeout = null;
 var firstSet = true;
 var weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 var test = true; // State for create and send Testmessages
-var areas =[];
+var areas = [];
 data = landroidS;
 
 
@@ -57,11 +57,24 @@ adapter.on('stateChange', function (id, state) {
             landroid.sendMessage('{"rd":' + val + '}');
             adapter.log.info("Changed time wait after rain to:" + val);
         }
-        else if ((command === "borderCut")||(command === "startTime")||(command === "workTime")) {
-            changeMowerCfg(id,state.val);
+        else if ((command === "borderCut") || (command === "startTime") || (command === "workTime")) {
+            changeMowerCfg(id, state.val);
         }
-        else if ((command === "area_1") || (command === "area_2") || (command === "area_3") || (command === "area_4") ) {
-            changeMowerArea(id,state.val);
+        else if ((command === "area_1") || (command === "area_2") || (command === "area_3") || (command === "area_4")) {
+            changeMowerArea(id, state.val);
+        }
+        else if (command === "startSequence") {
+            startSequences(id, state.val);
+        }
+        else if (command === "mowTimeExtend") {
+            mowTimeEx(id, state.val);
+        }
+        else if (command === "mowerActive") {
+            var val = (state.val ? 1 : 0);
+            var message = data.cfg.sc;
+            message.m = val;
+            landroid.sendMessage('{"sc":' + JSON.stringify(message) + '}');
+            adapter.log.info("Mow times disabled: " + message.m);
         }
     }
 });
@@ -79,68 +92,107 @@ adapter.on('message', function (obj) {
     }
 });
 function changeMowerCfg(id, value) {
-  var val = value;
-  var sval ;
-  var message= data.cfg.sc.d; // set aktual values
-  var dayID = weekday.indexOf(id.split('.')[3]);
-  var valID = ["startTime","workTime","borderCut"].indexOf(id.split('.')[4]);
+    var val = value;
+    var sval;
+    var message = data.cfg.sc.d; // set aktual values
+    var dayID = weekday.indexOf(id.split('.')[3]);
+    var valID = ["startTime", "workTime", "borderCut"].indexOf(id.split('.')[4]);
 
-  try{
-    if(valID ===2 ){
-      sval = (valID ===2 && val === true) ? 1 : 0;
-    }
-    else if(valID ===0){
-        var h = val.split(':')[0];
-        var m = val.split(':')[1];
-        adapter.log.info("h: "+ h +" m: "+ m );
-        if(h >=0 && h<=23 && m>=0 && m <=59){
-            sval = val;
+    try {
+        if (valID === 2) {
+            sval = (valID === 2 && val === true) ? 1 : 0;
         }
-        else adapter.log.error('Time out of range: e.g "10:00"');
+        else if (valID === 0) {
+            var h = val.split(':')[0];
+            var m = val.split(':')[1];
+            adapter.log.info("h: " + h + " m: " + m);
+            if (h >= 0 && h <= 23 && m >= 0 && m <= 59) {
+                sval = val;
+            }
+            else adapter.log.error('Time out of range: e.g "10:00"');
+        }
+        else if (valID === 1) {
+            if (val >= 0 && val <= 720) {
+                sval = val;
+            }
+            else adapter.log.error('Time out of range 0 min < time < 720 min.');
+
+        }
+        else adapter.log.error('Something went wrong while setting new mower times');
     }
-    else if(valID ===1 ){
-      if(val >=0 && val <= 720){
-          sval = val;
-      }
-      else  adapter.log.error('Time out of range 0 min < time < 720 min.');
+    catch (e) {
+        adapter.log.error("Error while setting mowers config: " + e);
+    }
+
+    if (sval) {
+        message[dayID][valID] = sval;
+        adapter.log.info("Mow time change to: " + JSON.stringify(message));
+        landroid.sendMessage('{"sc":{"d":' + JSON.stringify(message) + '}}');
 
     }
-    else adapter.log.error('Something went wrong while setting new mower times');
-  }
-  catch(e){
-    adapter.log.error("Error while setting mowers config: "+ e);
-  }
-
-  if(sval){
-    message[dayID][valID] = sval;
-    adapter.log.info("Mow time change to: "+ JSON.stringify(message));
-    landroid.sendMessage('{"sc":{"d":'+JSON.stringify(message)+'}}');
-
-  }
-  adapter.log.info("test cfg: "+ dayID +" valID: "+ valID +" val: "+ val +" sval: "+ sval);
+    adapter.log.info("test cfg: " + dayID + " valID: " + valID + " val: " + val + " sval: " + sval);
 
 }
-function changeMowerArea(id, value){
-  var val = value;
-  var message= data.cfg.mz; // set aktual values
-  var areaID = (id.split('_').pop())-1;
+function mowTimeEx(id, value) {
+    var val = value;
+    var message = data.cfg.sc; // set aktual values
+    if (!isNaN(val) && val >= -100 && val <= 100) {
+        message.p = val;
+        landroid.sendMessage('{"sc":' + JSON.stringify(message) + '}');
+        adapter.log.info("MowerTimeExtend set to : " + message.p);
 
-  try {
-    if (!isNaN(val) && val >= 0 && val <=500){
-      message[areaID] = val;
-      landroid.sendMessage('{"mz":'+JSON.stringify(message)+'}');
-      adapter.log.info("Change Area "+(areaID +1)+ " : "+ JSON.stringify(message));
+    } else {
+        adapter.log.error("MowerTimeExtend must be a value between -100 and 100");
     }
-    else{
-      adapter.log.error("Area Value ist not correct, please type in a val between 0 and 500");
-      adapter.setState("areas.area_"+(areaID +1), { val: (data.cfg.mz && data.cfg.mz[areaID] ? data.cfg.mz[areaID] : 0), ack: true });
-    }
-  }
-  catch (e) {
-    adapter.log.error("Error while setting mowers areas: "+ e);
-  }
 }
 
+function changeMowerArea(id, value) {
+    var val = value;
+    var message = data.cfg.mz; // set aktual values
+    var areaID = (id.split('_').pop()) - 1;
+
+    try {
+        if (!isNaN(val) && val >= 0 && val <= 500) {
+            message[areaID] = val;
+            landroid.sendMessage('{"mz":' + JSON.stringify(message) + '}');
+            adapter.log.info("Change Area " + (areaID + 1) + " : " + JSON.stringify(message));
+        }
+        else {
+            adapter.log.error("Area Value ist not correct, please type in a val between 0 and 500");
+            adapter.setState("areas.area_" + (areaID + 1), { val: (data.cfg.mz && data.cfg.mz[areaID] ? data.cfg.mz[areaID] : 0), ack: true });
+        }
+    }
+    catch (e) {
+        adapter.log.error("Error while setting mowers areas: " + e);
+    }
+}
+function startSequences(id, value) {
+    var val = value;
+    var message = data.cfg.mz; // set aktual values
+    var seq = [];
+    try {
+        seq = JSON.parse("[" + val + "]");
+
+        for (var i = 0; i < 10; i++) {
+            if (seq[i] != undefined) {
+                if (isNaN(seq[i]) || seq[i] < 0 || seq[i] > 3) {
+                    seq[i] = 0;
+                    adapter.log.error("Wrong start sequence, set val " + i + " to 0");
+                }
+
+            } else {
+                seq[i] = 0;
+                adapter.log.warn("Array ist too short, filling up with start point 0");
+            }
+        }
+        landroid.sendMessage('{"mzv":' + JSON.stringify(seq) + '}');
+        adapter.log.info("new Array is: " + JSON.stringify(seq));
+
+    }
+    catch (e) {
+        adapter.log.error("Error while setting start seqence: " + e);
+    }
+}
 
 function startMower() {
     if (state === 1 && error == 0) {
@@ -409,8 +461,39 @@ function procedeLandroidS() {
         },
         native: {}
     });
-
-
+    adapter.setObjectNotExists('info.wifiQuality', {
+        type: 'state',
+        common: {
+            name: "Wifi quality",
+            type: "number",
+            read: true,
+            unit: "%",
+            desc: "Prozent of Wifi quality"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('calendar.mowerActive', {
+        type: 'state',
+        common: {
+            name: "Time-controlled mowing",
+            type: "boolean",
+            read: true,
+            desc: "Time-controlled mowing"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('calendar.mowTimeExtend', {
+        type: 'state',
+        common: {
+            name: "Mowing times exceed",
+            type: "number",
+            read: true,
+            write: true,
+            unit: "%",
+            desc: "Extend the mowing time"
+        },
+        native: {}
+    });
 
     //States for testing
     if (test) {
@@ -447,7 +530,7 @@ function evaluateCalendar(arr) {
         for (var i = 0; i < weekday.length; i++) {
             adapter.setState("calendar." + weekday[i] + ".startTime", { val: arr[i][0], ack: true });
             adapter.setState("calendar." + weekday[i] + ".workTime", { val: arr[i][1], ack: true });
-            adapter.setState("calendar." + weekday[i] + ".borderCut", { val: (arr[i][2] && arr[i][2]===1 ? true : false), ack: true });
+            adapter.setState("calendar." + weekday[i] + ".borderCut", { val: (arr[i][2] && arr[i][2] === 1 ? true : false), ack: true });
 
 
         }
@@ -462,14 +545,14 @@ function evaluateResponse() {
 
     adapter.setState("mower.waitRain", { val: data.cfg.rd, ack: true });
     adapter.setState("mower.batteryState", { val: data.dat.bt.p, ack: true });
-  
+
 
     setStates();
 }
 
 function setStates() {
     //landroid S set states
-    var sequence=[];
+    var sequence = [];
 
     adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? Math.round(data.dat.st.wt / 6) / 10 : null), ack: true });
     adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? Math.round(data.dat.st.d / 100) / 10 : null), ack: true });
@@ -479,24 +562,29 @@ function setStates() {
     adapter.setState("mower.batteryTemterature", { val: (data.dat.bt && data.dat.bt.t ? data.dat.bt.t : null), ack: true });
     adapter.setState("mower.error", { val: (data.dat && data.dat.le ? data.dat.le : 0), ack: true });
     adapter.setState("mower.status", { val: (data.dat && data.dat.ls ? data.dat.ls : 0), ack: true });
+    adapter.setState("info.wifiQuality", { val: (data.dat && data.dat.rsi ? data.dat.rsi : 0), ack: true });
+
+
+    adapter.setState("calendar.mowerActive", { val: (data.cfg.sc && data.cfg.sc.m ? true : false), ack: true });
+    adapter.setState("calendar.mowTimeExtend", { val: (data.cfg.sc && data.cfg.sc.p ? data.cfg.sc.p : 0), ack: true });
 
     // sort Areas
     adapter.setState("areas.area_1", { val: (data.cfg.mz && data.cfg.mz[0] ? data.cfg.mz[0] : 0), ack: true });
     adapter.setState("areas.area_2", { val: (data.cfg.mz && data.cfg.mz[1] ? data.cfg.mz[1] : 0), ack: true });
     adapter.setState("areas.area_3", { val: (data.cfg.mz && data.cfg.mz[2] ? data.cfg.mz[2] : 0), ack: true });
     adapter.setState("areas.area_4", { val: (data.cfg.mz && data.cfg.mz[3] ? data.cfg.mz[3] : 0), ack: true });
-    areas= data.cfg.mz;
+    areas = data.cfg.mz;
 
     for (var i = 0; i < data.cfg.mzv.length; i++) {
-    //  adapter.setState("areas.startSequence", { val: data.cfg.mzv[i], ack: true });
-      sequence.push(data.cfg.mzv[i]);
+        //  adapter.setState("areas.startSequence", { val: data.cfg.mzv[i], ack: true });
+        sequence.push(data.cfg.mzv[i]);
     }
     adapter.setState("areas.startSequence", { val: (sequence), ack: true });
 
     state = (data.dat && data.dat.ls ? data.dat.ls : 0);
     error = (data.dat && data.dat.le ? data.dat.le : 0);
 
-    if ((state === 7 || state=== 9 ) && error === 0) {
+    if ((state === 7 || state === 9) && error === 0) {
         adapter.setState("mower.state", { val: true, ack: true });
     } else {
         adapter.setState("mower.state", { val: false, ack: true });
@@ -513,13 +601,13 @@ adapter.on('ready', function () {
 //Autoupdate Push
 var updateListener = function (status) {
     if (status) { // We got some data from the Landroid
-      clearTimeout(pingTimeout);
-      pingTimeout = null;
-      if (!connected) {
-        connected = true;
-        adapter.log.info('Connected to mower');
-        adapter.setState('info.connection', true, true);
-      }
+        clearTimeout(pingTimeout);
+        pingTimeout = null;
+        if (!connected) {
+            connected = true;
+            adapter.log.info('Connected to mower');
+            adapter.setState('info.connection', true, true);
+        }
         data = status; // Set new Data to var data
         adapter.setState("mower.testresponse", { val: JSON.stringify(status), ack: true });
         evaluateResponse();
@@ -529,13 +617,13 @@ var updateListener = function (status) {
 };
 
 function checkStatus() {
-    pingTimeout = setTimeout(function() {
-      pingTimeout = null;
-      if (connected) {
-        connected = false;
-        adapter.log.info('Disconnect from mower');
-        adapter.setState('info.connection', false, true);
-      }
+    pingTimeout = setTimeout(function () {
+        pingTimeout = null;
+        if (connected) {
+            connected = false;
+            adapter.log.info('Disconnect from mower');
+            adapter.setState('info.connection', false, true);
+        }
     }, 3000);
     landroid.sendMessage('{}');
 }
@@ -543,11 +631,11 @@ function checkStatus() {
 function main() {
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
-    if(adapter.config.mac !== "XX:XX:XX:XX:XX:XX" && adapter.config.pwd !== "PASSWORT"){
-      landroid = new LandroidCloud(adapter);
+    if (adapter.config.mac !== "XX:XX:XX:XX:XX:XX" && adapter.config.pwd !== "PASSWORT") {
+        landroid = new LandroidCloud(adapter);
     }
-    else{
-      adapter.log.error("Bitte email, Passwort und Mac ausfüllen");
+    else {
+        adapter.log.error("Bitte email, Passwort und Mac ausfüllen");
     }
 
 
@@ -562,10 +650,10 @@ function main() {
     adapter.log.debug('password were set to: ' + adapter.config.pwd);
     adapter.log.debug('MAC adress set to: ' + adapter.config.mac);
 
-    if(adapter.config.mac !== "XX:XX:XX:XX:XX:XX" && adapter.config.pwd !== "PASSWORT"){
-    landroid.init(updateListener);
-    setInterval(checkStatus, secs * 1000);
-  }
+    if (adapter.config.mac !== "XX:XX:XX:XX:XX:XX" && adapter.config.pwd !== "PASSWORT") {
+        landroid.init(updateListener);
+        setInterval(checkStatus, secs * 1000);
+    }
     evaluateResponse();
 
     adapter.subscribeStates('*');

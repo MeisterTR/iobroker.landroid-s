@@ -8,39 +8,40 @@ ioBroker.landrois-s
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/MeisterTR/iobroker.landroid-s?branch=master&svg=true)](https://ci.appveyor.com/project/MeisterTR/iobroker-landroid-s/)
 
 
-Dieser Adapter verbindet Iobroker mit deinem Landroid S Modell 2017
+Dieser Adapter verbindet IoBroker mit deinem Landroid S Modell 2017
 Es werden Temperaturen, Mähzeiten, Akkustand und diverse weitere Daten ausgelesen
 Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geändert werden.
 
 ## Installation
-Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von diesem Adapter nicht mehr unterstüztz.
+Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von diesem Adapter nicht mehr unterstützt.
 
-Bei der Insatallation unter Windows muss zusätzlich noch open-ssl installiert werden.Und ggf. der Pfad in lib/landroid-cloud.js geändert werden (wird noch geändert)
+Bei der Installation unter Windows muss zusätzlich noch open-ssl installiert werden. Und ggf. der Pfad in lib/landroid-cloud.js geändert werden (wird noch geändert)
 
 ## Einstellungen
-- Bei email und Passwort müssen die Daten eingeben werden, mit denen man bei worx registriert ist.
+- Bei E-mail und Passwort müssen die Daten eingeben werden, mit denen man bei Worx registriert ist.
 - Die Mac Adresse findet man, wenn man in der App auf erweiterte Einstellungen geht.
-- Der Intervall ist der Abstand in dem die Werte aktualisiert werden.  Dies ist aber nur interessant für den Akkustand und andere, da der Roboter bei wichtigen Ereignissen (Error oder Mähen) selber nachrichten an den Adapter schickt.
+- Der Intervall ist der Abstand in dem die Werte aktualisiert werden.  Dies ist aber nur interessant für den Akkustand und andere, da der Roboter bei wichtigen Ereignissen (Error oder Mähen) selber Nachrichten an den Adapter schickt.
 
 ### Wechsel von 0.1.X auf 0.2.X
-Bitte adapter vor Update deinstallieren, da einige Objekte erst bei der Insatallation angelegt werden.
+Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installation angelegt werden.
 
 
 ## Changelog
-
+#### 0.2.5
+* (MeisterTR) now every parameter can be configure
 #### 0.2.3
-* (MeisterTR) add areas, suporting change areas
+* (MeisterTR) add areas, supporting change areas
 #### 0.2.2
 * (MeisterTR) supported change of mowing times and error catching
 #### 0.1.2
-* (MeisterTR) add moving data
+* (MeisterTR) add mowing data
 #### 0.0.1
 * (MeisterTR) initial release
 
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2017 @@Author@@ <@@email@@>
+Copyright (c) 2017 MeisterTR <meistertr.smarthome@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

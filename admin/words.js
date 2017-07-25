@@ -1,10 +1,13 @@
 // Dictionary (systemDictionary is global variable from adapter-settings.js)
 systemDictionary = {
-	"template adapter settings": {"de": "Beispiel", "ru": "Пример"},
-	"test1":                    {"en": "Test 1", "de": "Test 1", "ru": "Тест 1"},
-	"test2":                    {"en": "Test 2", "de": "Test 2", "ru": "Тест 2"},
+	"NEW Landroid S 2017":		{"en": "NEW Landroid S 2017", "de": "NEU Landroid S 2017", "ru": "NEW Landroid S 2017"},
+	"settings":                    {"en": "settings", "de": "Einstellungen", "ru": "РЅР°СЃС‚СЂРѕР№РєРё"},
+	"e-mail":                    {"en": "email", "de": "E-mail", "ru": "Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°"},
+	"password":                    {"en": "password", "de": "Passwort", "ru": "РїР°СЂРѕР»СЊ"},
+	"MAC address":                    {"en": "MAC address", "de": "MAC Adresse", "ru": "MAC address"},
+	"interval in sec.":                    {"en": "interval in sec.", "de": "Intervall in Sek.", "ru": "interval in sec."},
 	"on save adapter restarts with new config immediately": {
 		"de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
-		"ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
+		"ru": "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 	}
 };
