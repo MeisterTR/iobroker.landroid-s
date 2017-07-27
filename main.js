@@ -654,7 +654,7 @@ function main() {
         landroid.init(updateListener);
         setInterval(checkStatus, secs * 1000);
     }
-    evaluateResponse();
+    //evaluateResponse();
 
     adapter.subscribeStates('*');
     //checkStatus();
