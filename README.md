@@ -2,10 +2,10 @@
 ioBroker.landrois-s
 =============
 
-[![bitHound Overall Score](https://www.bithound.io/github/MeisterTR/iobroker.landroid-s/badges/score.svg)](https://www.bithound.io/github/MeisterTR/iobroker.landroid-s)
+[![bitHound Overall Score](https://www.bithound.io/github/MeisterTR/ioBroker.landroid-s/badges/score.svg)](https://www.bithound.io/github/MeisterTR/iobroker.landroid-s)
 
-**Tests:** Linux/Mac: [![Travis-CI](https://api.travis-ci.org/MeisterTR/iobroker.landroid-s.svg?branch=master)](https://travis-ci.org/MeisterTR/iobroker.landroid-s)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/MeisterTR/iobroker.landroid-s?branch=master&svg=true)](https://ci.appveyor.com/project/MeisterTR/iobroker-landroid-s/)
+**Tests:** Linux/Mac: [![Travis-CI](https://api.travis-ci.org/MeisterTR/ioBroker.landroid-s.svg?branch=master)](https://travis-ci.org/MeisterTR/ioBroker.landroid-s)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/MeisterTR/ioBroker.landroid-s?branch=master&svg=true)](https://ci.appveyor.com/project/MeisterTR/ioBroker-landroid-s/)
 
 
 Dieser Adapter verbindet IoBroker mit deinem Landroid S Modell 2017
