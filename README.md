@@ -1,5 +1,5 @@
 ![Logo](admin/landroid-s.png)
-ioBroker.landrois-s
+ioBroker.landroid-s
 =============
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.landroid-s.svg)](https://www.npmjs.com/package/iobroker.landroid-s)
