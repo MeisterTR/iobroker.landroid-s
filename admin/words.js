@@ -6,6 +6,8 @@ systemDictionary = {
 	"password":                    {"en": "password", "de": "Passwort", "ru": "пароль"},
 	"MAC address":                  {"en": "MAC address", "de": "MAC Adresse", "ru": "MAC address"},
 	"interval in sec.":                    {"en": "interval in sec.", "de": "Intervall in Sek.", "ru": "interval in sec."},
+	"add raw data":                    {"en": "add raw data", "de": "Rohdaten anzeigen und senden", "ru": "add raw data"},
+
 	"on save adapter restarts with new config immediately": {
 		"de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
 		"ru": "����� ����� ���������� �������� ������� ��������������� � ������ ����������"

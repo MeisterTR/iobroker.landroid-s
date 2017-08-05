@@ -48,7 +48,7 @@ adapter.on('stateChange', function (id, state) {
             }
         }
         //Send Testmessage
-        else if ((command == "testsend")) {
+        else if ((command == "rawSend")) {
             landroid.sendMessage(state.val);
         }
 
@@ -221,13 +221,13 @@ function stopMower() {
 }
 
 function procedeLandroidS() {
-    var Button;
+    var Button = adapter.config.enableJson ;
     if (true) {
 
         //delete Teststates
-        if (!test) {
-            adapter.deleteState(adapter.namespace, "mower", "testsend");
-            adapter.deleteState(adapter.namespace, "mower", "testresponse");
+        if (!Button) {
+            adapter.deleteState(adapter.namespace, "mower", "rawSend");
+            adapter.deleteState(adapter.namespace, "mower", "rawResponse");
         }
         //adapter.createChannel(adapter.namespace, "areas", {
         //  name: "mower areas"
@@ -496,8 +496,8 @@ function procedeLandroidS() {
     });
 
     //States for testing
-    if (test) {
-        adapter.setObjectNotExists('mower.testsend', {
+    if (Button) {
+        adapter.setObjectNotExists('mower.rawSend', {
             type: 'state',
             common: {
                 name: "Battery temperature",
@@ -508,13 +508,13 @@ function procedeLandroidS() {
             },
             native: {}
         });
-        adapter.setObjectNotExists('mower.testresponse', {
+        adapter.setObjectNotExists('mower.rawResponse', {
             type: 'state',
             common: {
                 name: "Battery temperature",
                 type: "sting",
                 read: true,
-                write: true,
+                write: false,
                 desc: "testtosend"
             },
             native: {}
@@ -609,7 +609,7 @@ var updateListener = function (status) {
             adapter.setState('info.connection', true, true);
         }
         data = status; // Set new Data to var data
-        adapter.setState("mower.testresponse", { val: JSON.stringify(status), ack: true });
+        adapter.setState("mower.rawResponse", { val: JSON.stringify(status), ack: true });
         evaluateResponse();
     } else {
         adapter.log.error("Error getting update!");

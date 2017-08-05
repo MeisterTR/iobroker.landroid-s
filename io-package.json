@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "0.2.5",
+		"version": "0.3.0",
 		"news": {
+			"0.3.0": {
+				"en": "add rawdata",
+				"de": "Rohdaten hinzugefügt"
+			},
 			"0.2.5": {
 				"en": "every comnfig parameter is configureable",
 				"de": "Alle unterstützten Parameter können geändert werden"
