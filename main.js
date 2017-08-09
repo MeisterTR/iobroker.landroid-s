@@ -446,7 +446,7 @@ function procedeLandroidS() {
         },
         native: {}
     });
-    adapter.setObjectNotExists('areas.actualAreaIndecator', {
+    adapter.setObjectNotExists('areas.actualAreaIndicator', {
         type: 'state',
         common: {
             name: "Actual area",
@@ -613,7 +613,7 @@ function setStates() {
     adapter.setState("areas.area_4", { val: (data.cfg.mz && data.cfg.mz[3] ? data.cfg.mz[3] : 0), ack: true });
 
     adapter.setState("areas.actualArea", { val: (data.dat ? data.cfg.mzv[data.dat.lz] : null), ack: true });
-    adapter.setState("areas.actualAreaIndecator", { val: (data.dat && data.dat.lz ? data.dat.lz : null), ack: true });
+    adapter.setState("areas.actualAreaIndicator", { val: (data.dat && data.dat.lz ? data.dat.lz : null), ack: true });
 
     areas = data.cfg.mz;
 
