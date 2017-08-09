@@ -301,6 +301,18 @@ function procedeLandroidS() {
         },
         native: {}
     });
+    adapter.setObjectNotExists('mower.batteryChargeCycle', {
+        type: 'state',
+        common: {
+            name: "Battery charge cycle",
+            type: "number",
+            role: 'indicator',
+            read: true,
+            write: false,
+            desc: "Show the number of charging cycles"
+        },
+        native: {}
+    });
     adapter.setObjectNotExists('mower.batteryVoltage', {
         type: 'state',
         common: {
@@ -422,6 +434,31 @@ function procedeLandroidS() {
         },
         native: {}
     });
+    adapter.setObjectNotExists('areas.actualArea', {
+        type: 'state',
+        common: {
+            name: "Actual area",
+            type: "number",
+            role: "value",
+            read: true,
+            write: false,
+            desc: "Show the current area"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('areas.actualAreaIndecator', {
+        type: 'state',
+        common: {
+            name: "Actual area",
+            type: "number",
+            role: "value",
+            read: true,
+            write: false,
+            desc: "Show the current area"
+        },
+        native: {}
+    });
+
     adapter.setObjectNotExists('areas.area_2', {
         type: 'state',
         common: {
@@ -557,6 +594,7 @@ function setStates() {
     adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? Math.round(data.dat.st.wt / 6) / 10 : null), ack: true });
     adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? Math.round(data.dat.st.d / 100) / 10 : null), ack: true });
     adapter.setState("mower.totalBladeTime", { val: (data.dat.st && data.dat.st.b ? Math.round(data.dat.st.b / 6) / 10 : null), ack: true });
+    adapter.setState("mower.batteryChargeCycle", {val: (data.dat.bt && data.dat.bt.nr ? data.dat.bt.nr : null), ack: true });
     adapter.setState("mower.batteryCharging", { val: (data.dat.bt && data.dat.bt.c ? true : false), ack: true });
     adapter.setState("mower.batteryVoltage", { val: (data.dat.bt && data.dat.bt.v ? data.dat.bt.v : null), ack: true });
     adapter.setState("mower.batteryTemterature", { val: (data.dat.bt && data.dat.bt.t ? data.dat.bt.t : null), ack: true });
@@ -573,6 +611,10 @@ function setStates() {
     adapter.setState("areas.area_2", { val: (data.cfg.mz && data.cfg.mz[1] ? data.cfg.mz[1] : 0), ack: true });
     adapter.setState("areas.area_3", { val: (data.cfg.mz && data.cfg.mz[2] ? data.cfg.mz[2] : 0), ack: true });
     adapter.setState("areas.area_4", { val: (data.cfg.mz && data.cfg.mz[3] ? data.cfg.mz[3] : 0), ack: true });
+
+    adapter.setState("areas.actualArea", { val: (data.dat ? data.cfg.mzv[data.dat.lz] : null), ack: true });
+    adapter.setState("areas.actualAreaIndecator", { val: (data.dat && data.dat.lz ? data.dat.lz : null), ack: true });
+
     areas = data.cfg.mz;
 
     for (var i = 0; i < data.cfg.mzv.length; i++) {
