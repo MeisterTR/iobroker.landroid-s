@@ -1,10 +1,10 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "0.3.0",
+		"version": "0.3.1",
 		"news": {
-			"0.3.0": {
-				"en": "add rawdata",
+			"0.3.1": {
+				"en": "add rawdata, chargecycle and actualArea",
 				"de": "Rohdaten hinzugefügt"
 			},
 			"0.2.5": {
