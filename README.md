@@ -31,7 +31,9 @@ Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installa
 
 
 ## Changelog
-#### 0.3.1 (09.08.2017)
+#### 0.3.1 (12.08.2017)
+* (MeisterTR) bugfix cound not set bordercut to false
+* (MeisterTR) add checkbox for m and min.
 * (MeisterTR) add rawdata, chargecycle and actualArea
 #### 0.2.5
 * (MeisterTR) now every parameter can be configure

@@ -7,21 +7,13 @@
 				"en": "add rawdata, chargecycle and actualArea",
 				"de": "Rohdaten hinzugefügt"
 			},
+			"0.3.0": {
+				"en": "add rawdata",
+				"de": "Rohdaten hinzugefügt"
+			},
 			"0.2.5": {
 				"en": "every comnfig parameter is configureable",
 				"de": "Alle unterstützten Parameter können geändert werden"
-			},
-			"0.2.3": {
-				"en": "suported changing mowing times",
-				"de": "Mähzeiten können geändert werden"
-			},
-			"0.1.1": {
-				"en": "add States",
-				"de": "Datenpunkte hinzugefügt",
-				"ru": "Первоначальный адаптер",
-				"pt": "Versão inicial",
-				"fr": "Version initiale",
-				"nl": "Eerste release"
 			}
 		},
 		"title": "Worx Landroid S 2017 ",
@@ -54,7 +46,9 @@
 		"email": "max.mustermann@gmx.de",
 		"pwd": "PASSWORT",
 		"mac": "XX:XX:XX:XX:XX:XX",
-		"poll": "60"
+		"poll": "60",
+		"enableJson": false,
+		"houerKm": false
 	},
 	"objects": [],
 	"instanceObjects": [

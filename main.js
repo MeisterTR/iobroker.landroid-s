@@ -124,13 +124,13 @@ function changeMowerCfg(id, value) {
         adapter.log.error("Error while setting mowers config: " + e);
     }
 
-    if (sval) {
+    if (sval !== undefined) {
         message[dayID][valID] = sval;
-        adapter.log.info("Mow time change to: " + JSON.stringify(message));
+        adapter.log.debug("Mow time change to: " + JSON.stringify(message));
         landroid.sendMessage('{"sc":{"d":' + JSON.stringify(message) + '}}');
 
     }
-    adapter.log.info("test cfg: " + dayID + " valID: " + valID + " val: " + val + " sval: " + sval);
+    adapter.log.debug("test cfg: " + dayID + " valID: " + valID + " val: " + val + " sval: " + sval);
 
 }
 function mowTimeEx(id, value) {
@@ -591,9 +591,18 @@ function setStates() {
     //landroid S set states
     var sequence = [];
 
-    adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? Math.round(data.dat.st.wt / 6) / 10 : null), ack: true });
-    adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? Math.round(data.dat.st.d / 100) / 10 : null), ack: true });
-    adapter.setState("mower.totalBladeTime", { val: (data.dat.st && data.dat.st.b ? Math.round(data.dat.st.b / 6) / 10 : null), ack: true });
+    if(adapter.config.houerKm){
+      adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? data.dat.st.wt : null), ack: true });
+      adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? data.dat.st.d  : null), ack: true });
+      adapter.setState("mower.totalBladeTime", { val: (data.dat.st && data.dat.st.b ? data.dat.st.b  : null), ack: true });
+    }
+    else{
+      adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? Math.round(data.dat.st.wt / 6) / 10 : null), ack: true });
+      adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? Math.round(data.dat.st.d / 100) / 10 : null), ack: true });
+      adapter.setState("mower.totalBladeTime", { val: (data.dat.st && data.dat.st.b ? Math.round(data.dat.st.b / 6) / 10 : null), ack: true });
+    }
+
+
     adapter.setState("mower.batteryChargeCycle", {val: (data.dat.bt && data.dat.bt.nr ? data.dat.bt.nr : null), ack: true });
     adapter.setState("mower.batteryCharging", { val: (data.dat.bt && data.dat.bt.c ? true : false), ack: true });
     adapter.setState("mower.batteryVoltage", { val: (data.dat.bt && data.dat.bt.v ? data.dat.bt.v : null), ack: true });
