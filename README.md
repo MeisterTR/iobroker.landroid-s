@@ -19,18 +19,23 @@ Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geänder
 ## Installation
 Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von diesem Adapter nicht mehr unterstützt.
 
-Bei der Installation unter Windows muss zusätzlich noch open-ssl installiert werden. Und ggf. der Pfad in lib/landroid-cloud.js geändert werden (wird noch geändert)
+Bei der Installation unter Windows muss zusätzlich noch open-ssl installiert werden. Der Standardpfad ist in der Konfig hinterlegt, sollte dieser abweichen, muss er in der Konfig. angepasst werden.
 
 ## Einstellungen
 - Bei E-mail und Passwort müssen die Daten eingeben werden, mit denen man bei Worx registriert ist.
 - Die Mac Adresse findet man, wenn man in der App auf erweiterte Einstellungen geht.
 - Der Intervall ist der Abstand in dem die Werte aktualisiert werden.  Dies ist aber nur interessant für den Akkustand und andere, da der Roboter bei wichtigen Ereignissen (Error oder Mähen) selber Nachrichten an den Adapter schickt.
 
-### Wechsel von 0.1.X auf 0.2.X
+### Wechsel von 0.X.X auf 1.X.X
 Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installation angelegt werden.
 
 
 ## Changelog
+#### 1.0.1 (07.09.2017)
+* (MeisterTR) change Values from vis did not work (Fixed)
+* (MeisterTR) changeing path from OpenSSL.exe on Windows now in config
+* (MeisterTR) chatch errors on start if config is not set
+* (MeisterTR) some other changes
 #### 0.3.1 (12.08.2017)
 * (MeisterTR) bugfix cound not set bordercut to false
 * (MeisterTR) add checkbox for m and min.

@@ -1,21 +1,25 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "0.3.1",
-		"news": {
-			"0.3.1": {
-				"en": "add rawdata, chargecycle and actualArea",
-				"de": "Rohdaten hinzugefügt"
-			},
-			"0.3.0": {
-				"en": "add rawdata",
-				"de": "Rohdaten hinzugefügt"
-			},
-			"0.2.5": {
-				"en": "every comnfig parameter is configureable",
-				"de": "Alle unterstützten Parameter können geändert werden"
-			}
-		},
+		"version": "1.0.1",
+    "news": {
+      "1.0.1": {
+        "en": "Bug fixes, small changes",
+        "de": "Fehler beseitigt und Kleinigkeiten geändert"
+      },
+      "0.3.1": {
+        "en": "add rawdata, chargecycle and actualArea",
+        "de": "Rohdaten hinzugefügt"
+      },
+      "0.3.0": {
+        "en": "add rawdata",
+        "de": "Rohdaten hinzugefügt"
+      },
+      "0.2.5": {
+        "en": "every comnfig parameter is configureable",
+        "de": "Alle unterstützten Parameter können geändert werden"
+      }
+    },
 		"title": "Worx Landroid S 2017 ",
 		"desc": {
 			"en": "Control your Landroid S 2017",
@@ -42,14 +46,15 @@
 			"vis"
 		]
 	},
-	"native": {
-		"email": "max.mustermann@gmx.de",
-		"pwd": "PASSWORT",
-		"mac": "XX:XX:XX:XX:XX:XX",
-		"poll": "60",
-		"enableJson": false,
-		"houerKm": false
-	},
+  "native": {
+    "email": "max.mustermann@gmx.de",
+    "pwd": "PASSWORT",
+    "mac": "XX:XX:XX:XX:XX:XX",
+    "poll": "60",
+    "enableJson": false,
+    "houerKm": false,
+    "sslpath": "C:/OpenSSL-Win32/bin/openssl.exe"
+  },
 	"objects": [],
 	"instanceObjects": [
 		{

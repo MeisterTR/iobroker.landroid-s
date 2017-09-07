@@ -53,7 +53,7 @@ adapter.on('stateChange', function (id, state) {
         }
 
         else if ((command == "waitRain")) {
-            var val = (isNaN(state.val) || state.val < 1 ? 100 : state.val);
+            var val = (isNaN(state.val) || state.val < 0 ? 100 : parseInt(state.val));
             landroid.sendMessage('{"rd":' + val + '}');
             adapter.log.info("Changed time wait after rain to:" + val);
         }
@@ -61,13 +61,13 @@ adapter.on('stateChange', function (id, state) {
             changeMowerCfg(id, state.val);
         }
         else if ((command === "area_1") || (command === "area_2") || (command === "area_3") || (command === "area_4")) {
-            changeMowerArea(id, state.val);
+            changeMowerArea(id, parseInt(state.val));
         }
         else if (command === "startSequence") {
             startSequences(id, state.val);
         }
         else if (command === "mowTimeExtend") {
-            mowTimeEx(id, state.val);
+            mowTimeEx(id, parseInt(state.val));
         }
         else if (command === "mowerActive") {
             var val = (state.val ? 1 : 0);
@@ -99,10 +99,10 @@ function changeMowerCfg(id, value) {
     var valID = ["startTime", "workTime", "borderCut"].indexOf(id.split('.')[4]);
 
     try {
-        if (valID === 2) {
+        if (valID === 2) { // changed the border cut
             sval = (valID === 2 && val === true) ? 1 : 0;
         }
-        else if (valID === 0) {
+        else if (valID === 0) { // changed the start time
             var h = val.split(':')[0];
             var m = val.split(':')[1];
             adapter.log.info("h: " + h + " m: " + m);
@@ -111,9 +111,9 @@ function changeMowerCfg(id, value) {
             }
             else adapter.log.error('Time out of range: e.g "10:00"');
         }
-        else if (valID === 1) {
+        else if (valID === 1) { // changed the worktime
             if (val >= 0 && val <= 720) {
-                sval = val;
+                sval = parseInt(val);
             }
             else adapter.log.error('Time out of range 0 min < time < 720 min.');
 
@@ -221,7 +221,7 @@ function stopMower() {
 }
 
 function procedeLandroidS() {
-    var Button = adapter.config.enableJson ;
+    var Button = adapter.config.enableJson;
     if (true) {
 
         //delete Teststates
@@ -318,7 +318,7 @@ function procedeLandroidS() {
         common: {
             name: "Battery voltage",
             type: "number",
-            role: "value.interval",
+            role: "value.voltage",
             unit: "V",
             read: true,
             write: false,
@@ -331,20 +331,7 @@ function procedeLandroidS() {
         common: {
             name: "Battery temperature",
             type: "number",
-            role: "value.interval",
-            unit: "°C",
-            read: true,
-            write: false,
-            desc: "Temperature of movers battery"
-        },
-        native: {}
-    });
-    adapter.setObjectNotExists('mower.batteryTemterature', {
-        type: 'state',
-        common: {
-            name: "Battery temperature",
-            type: "number",
-            role: "value.interval",
+            role: "value.temperature",
             unit: "°C",
             read: true,
             write: false,
@@ -504,7 +491,7 @@ function procedeLandroidS() {
             name: "Wifi quality",
             type: "number",
             read: true,
-            unit: "%",
+            unit: "dBm",
             desc: "Prozent of Wifi quality"
         },
         native: {}
@@ -537,27 +524,43 @@ function procedeLandroidS() {
         adapter.setObjectNotExists('mower.rawSend', {
             type: 'state',
             common: {
-                name: "Battery temperature",
+                name: "raw send",
                 type: "sting",
                 read: true,
                 write: true,
-                desc: "testtosend"
+                desc: "object for sending raw messages to the mower"
             },
             native: {}
         });
         adapter.setObjectNotExists('mower.rawResponse', {
             type: 'state',
             common: {
-                name: "Battery temperature",
+                name: "raw response",
                 type: "sting",
                 read: true,
                 write: false,
-                desc: "testtosend"
+                desc: "Display the raw message from the mower"
             },
             native: {}
         });
     }
+
+
+    if (adapter.config.houerKm) {
+
+        changeUnit(["m", "min", "min"]);
+    } else {
+        changeUnit(["km", "h", "h"]);
+    }
+
     firstSet = false;
+}
+
+function changeUnit(unitset) {
+    var array = ['.mower.totalDistance', '.mower.totalBladeTime', '.mower.totalTime'];
+    for (var i = 0; i <= array.length; i++) {
+        adapter.extendObject(adapter.namespace + array[i], { common: { unit: unitset[i] } });
+    }
 }
 
 
@@ -591,19 +594,19 @@ function setStates() {
     //landroid S set states
     var sequence = [];
 
-    if(adapter.config.houerKm){
-      adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? data.dat.st.wt : null), ack: true });
-      adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? data.dat.st.d  : null), ack: true });
-      adapter.setState("mower.totalBladeTime", { val: (data.dat.st && data.dat.st.b ? data.dat.st.b  : null), ack: true });
+    if (adapter.config.houerKm) {
+        adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? data.dat.st.wt : null), ack: true });
+        adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? data.dat.st.d : null), ack: true });
+        adapter.setState("mower.totalBladeTime", { val: (data.dat.st && data.dat.st.b ? data.dat.st.b : null), ack: true });
     }
-    else{
-      adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? Math.round(data.dat.st.wt / 6) / 10 : null), ack: true });
-      adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? Math.round(data.dat.st.d / 100) / 10 : null), ack: true });
-      adapter.setState("mower.totalBladeTime", { val: (data.dat.st && data.dat.st.b ? Math.round(data.dat.st.b / 6) / 10 : null), ack: true });
+    else {
+        adapter.setState("mower.totalTime", { val: (data.dat.st && data.dat.st.wt ? Math.round(data.dat.st.wt / 6) / 10 : null), ack: true });
+        adapter.setState("mower.totalDistance", { val: (data.dat.st && data.dat.st.d ? Math.round(data.dat.st.d / 100) / 10 : null), ack: true });
+        adapter.setState("mower.totalBladeTime", { val: (data.dat.st && data.dat.st.b ? Math.round(data.dat.st.b / 6) / 10 : null), ack: true });
     }
 
 
-    adapter.setState("mower.batteryChargeCycle", {val: (data.dat.bt && data.dat.bt.nr ? data.dat.bt.nr : null), ack: true });
+    adapter.setState("mower.batteryChargeCycle", { val: (data.dat.bt && data.dat.bt.nr ? data.dat.bt.nr : null), ack: true });
     adapter.setState("mower.batteryCharging", { val: (data.dat.bt && data.dat.bt.c ? true : false), ack: true });
     adapter.setState("mower.batteryVoltage", { val: (data.dat.bt && data.dat.bt.v ? data.dat.bt.v : null), ack: true });
     adapter.setState("mower.batteryTemterature", { val: (data.dat.bt && data.dat.bt.t ? data.dat.bt.t : null), ack: true });
@@ -680,34 +683,46 @@ function checkStatus() {
 }
 
 function main() {
-    // The adapters config (in the instance object everything under the attribute "native") is accessible via
-    // adapter.config:
-    if (adapter.config.mac !== "XX:XX:XX:XX:XX:XX" && adapter.config.pwd !== "PASSWORT") {
-        landroid = new LandroidCloud(adapter);
+
+
+    landroid = new LandroidCloud(adapter);
+    var isDef = false;
+    if (typeof (landroid.sslBool) != "undefined") isDef = true;
+
+    if (adapter.config.mac === "XX:XX:XX:XX:XX:XX" || adapter.config.pwd === "PASSWORT") {
+
+        adapter.log.error("Bitte email, Passwort und Mac ausfüllen");
+        adapter.setState('info.connection', false, true);
+    }
+    else if (isDef && !landroid.sslBool) {
+        adapter.log.error("Der Pfad zur OpenSSL.exe stimmt nicht überein. Bitte in der Config anpassen");
+        adapter.setState('info.connection', false, true);
     }
     else {
-        adapter.log.error("Bitte email, Passwort und Mac ausfüllen");
-    }
 
 
-    if (firstSet) procedeLandroidS();
 
-    var secs = adapter.config.poll;
-    if (isNaN(secs) || secs < 1) {
-        secs = 60;
-    }
 
-    adapter.log.debug('mail adress: ' + adapter.config.email);
-    adapter.log.debug('password were set to: ' + adapter.config.pwd);
-    adapter.log.debug('MAC adress set to: ' + adapter.config.mac);
+        if (firstSet) procedeLandroidS();
 
-    if (adapter.config.mac !== "XX:XX:XX:XX:XX:XX" && adapter.config.pwd !== "PASSWORT") {
+        var secs = adapter.config.poll;
+        if (isNaN(secs) || secs < 1) {
+            secs = 60;
+        }
+        if (landroid.sslBool != undefined) adapter.log.error(landroid.sslBool);
+
+        adapter.log.debug('mail adress: ' + adapter.config.email);
+        adapter.log.debug('password were set to: ' + adapter.config.pwd);
+        adapter.log.debug('MAC adress set to: ' + adapter.config.mac);
+
+
         landroid.init(updateListener);
         setInterval(checkStatus, secs * 1000);
-    }
-    //evaluateResponse();
 
-    adapter.subscribeStates('*');
-    //checkStatus();
+
+        adapter.subscribeStates('*');
+
+
+    }
 
 }
