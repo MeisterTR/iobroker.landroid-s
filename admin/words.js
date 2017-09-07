@@ -7,7 +7,8 @@ systemDictionary = {
 	"MAC address":                  {"en": "MAC address", "de": "MAC Adresse", "ru": "MAC address"},
 	"interval in sec.":                    {"en": "interval in sec.", "de": "Intervall in Sek.", "ru": "interval in sec."},
 	"add raw data":                    {"en": "add raw data", "de": "Rohdaten anzeigen und senden", "ru": "add raw data"},
-	"Distance and time in min and m":	{"en":"Distance and time in min and m", "de": "Distanz und Laufzeit in Min. und Meter", "ru": "Distance and time in min and m"},
+    "Distance and time in min and m": { "en": "Distance and time in min and m", "de": "Distanz und Laufzeit in Min. und Meter", "ru": "Distance and time in min and m" },
+    "sslpath": { "en": "only for Windows SSl Path is different", "de": "Nur für Windows falls Pfad abweicht", "ru": "only for Windows SSl Path is different" },
 
 	"on save adapter restarts with new config immediately": {
 		"de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
