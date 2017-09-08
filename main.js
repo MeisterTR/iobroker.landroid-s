@@ -1,6 +1,6 @@
 /* jshint -W097 */ // jshint strict:false
 /*jslint node: true */
-"use strict"; 
+"use strict";
 
 // you have to require the utils module and call adapter function
 var utils = require(__dirname + '/lib/utils'); // Get common adapter utils
@@ -17,7 +17,7 @@ var firstSet = true;
 var weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 var test = false; // State for create and send Testmessages
 var areas = [];
-data = landroidS;
+//data = landroidS;
 
 
 adapter.on('unload', function (callback) {

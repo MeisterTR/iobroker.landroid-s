@@ -1,9 +1,9 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "1.0.2",
+		"version": "1.0.3",
     "news": {
-      "1.0.2": {
+      "1.0.3": {
         "en": "Bug fixes, small changes",
         "de": "Fehler beseitigt und Kleinigkeiten geändert"
       },
