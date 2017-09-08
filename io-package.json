@@ -1,9 +1,9 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "1.0.1",
+		"version": "1.0.2",
     "news": {
-      "1.0.1": {
+      "1.0.2": {
         "en": "Bug fixes, small changes",
         "de": "Fehler beseitigt und Kleinigkeiten geändert"
       },
@@ -53,7 +53,7 @@
     "poll": "60",
     "enableJson": false,
     "houerKm": false,
-    "sslpath": "C:/OpenSSL-Win32/bin/openssl.exe"
+    "sslpathdef": "C:/OpenSSL-Win32/bin/openssl.exe"
   },
 	"objects": [],
 	"instanceObjects": [
