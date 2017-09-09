@@ -31,7 +31,7 @@ Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installa
 
 
 ## Changelog
-#### 1.0.1 (07.09.2017)
+#### 1.0.3 (08.09.2017)
 * (MeisterTR) change Values from vis did not work (Fixed)
 * (MeisterTR) changeing path from OpenSSL.exe on Windows now in config
 * (MeisterTR) chatch errors on start if config is not set

@@ -17,7 +17,7 @@ var firstSet = true;
 var weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 var test = false; // State for create and send Testmessages
 var areas = [];
-data = landroidS;
+//data = landroidS;
 
 
 adapter.on('unload', function (callback) {
