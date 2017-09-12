@@ -50,7 +50,7 @@ Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installa
 * (MeisterTR) add mowing data
 #### 0.0.1
 * (MeisterTR) initial release
-
+ 
 ## License
 The MIT License (MIT)
 
