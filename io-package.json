@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "1.0.3",
+		"version": "1.0.4",
     "news": {
+      "1.0.4": {
+        "en": "Update dependencies",
+        "de": "Update npm Pakete"
+      },
       "1.0.3": {
         "en": "Bug fixes, small changes",
         "de": "Fehler beseitigt und Kleinigkeiten geändert"
