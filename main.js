@@ -1,4 +1,3 @@
-
 /* jshint -W097 */ // jshint strict:false
 /*jslint node: true */
 "use strict";
@@ -6,8 +5,9 @@
 // you have to require the utils module and call adapter function
 var utils = require(__dirname + '/lib/utils'); // Get common adapter utils
 var adapter = utils.adapter('landroid-s');
-var LandroidCloud = require(__dirname + '/lib/landroid-cloud');
+//var LandroidCloud = require(__dirname + '/lib/landroid-cloud');
 var landroidS = require(__dirname + '/responses/landroid-s.json');
+var LandroidCloud = require(__dirname + '/lib/newlc');
 
 var ip, pin, data, getOptions, error, state;
 var landroid;
@@ -687,16 +687,11 @@ function main() {
 
 
     landroid = new LandroidCloud(adapter);
-    var isDef = false;
-    if (typeof (landroid.sslBool) != "undefined") isDef = true;
+    
 
     if (adapter.config.mac === "XX:XX:XX:XX:XX:XX" || adapter.config.pwd === "PASSWORT") {
 
         adapter.log.error("Bitte email, Passwort und Mac ausfüllen");
-        adapter.setState('info.connection', false, true);
-    }
-    else if (isDef && !landroid.sslBool) {
-        adapter.log.error("Der Pfad zur OpenSSL.exe stimmt nicht überein. Bitte in der Config anpassen");
         adapter.setState('info.connection', false, true);
     }
     else {
@@ -710,20 +705,15 @@ function main() {
         if (isNaN(secs) || secs < 1) {
             secs = 60;
         }
-        if (landroid.sslBool != undefined) adapter.log.error(landroid.sslBool);
 
         adapter.log.debug('mail adress: ' + adapter.config.email);
         adapter.log.debug('password were set to: ' + adapter.config.pwd);
         adapter.log.debug('MAC adress set to: ' + adapter.config.mac);
 
-
         landroid.init(updateListener);
         setInterval(checkStatus, secs * 1000);
 
-
         adapter.subscribeStates('*');
-
-
     }
 
 }
