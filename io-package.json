@@ -4,7 +4,7 @@
 		"version": "1.1.4",
     "news": {
       "1.1.4": {
-        "en": "Add automatic Server selection, No more SSl",
+        "en": "Add automatic Server selection, No more SSl ",
         "de": "Kein SSL mehr Notwendig, Server wird automatisch gewählt"
       },
       "1.0.4": {
