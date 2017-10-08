@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "1.0.4",
+		"version": "1.1.5",
     "news": {
+      "1.1.5": {
+        "en": "no OpenSSL needed, change server automaticly",
+        "de": "Kein OpenSSL mehr, Serveradresse wird automatisch angepasst"
+      },
       "1.0.4": {
         "en": "Update dependencies",
         "de": "Update npm Pakete"
@@ -56,8 +60,7 @@
     "mac": "XX:XX:XX:XX:XX:XX",
     "poll": "60",
     "enableJson": false,
-    "houerKm": false,
-    "sslpathdef": "C:/OpenSSL-Win32/bin/openssl.exe"
+    "houerKm": false
   },
 	"objects": [],
 	"instanceObjects": [

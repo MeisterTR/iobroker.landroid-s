@@ -19,8 +19,6 @@ Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geänder
 ## Installation
 Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von diesem Adapter nicht mehr unterstützt.
 
-Bei der Installation unter Windows muss zusätzlich noch open-ssl installiert werden. Der Standardpfad ist in der Konfig hinterlegt, sollte dieser abweichen, muss er in der Konfig. angepasst werden.
-
 ## Einstellungen
 - Bei E-mail und Passwort müssen die Daten eingeben werden, mit denen man bei Worx registriert ist.
 - Die Mac Adresse findet man, wenn man in der App auf erweiterte Einstellungen geht.
@@ -31,6 +29,9 @@ Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installa
 
 
 ## Changelog
+#### 1.1.5 (08.10.2017)
+* (MeisterTR) change cloud connection need no OpenSSL
+* (MeisterTR) Serverselction automatic form Worx Server
 #### 1.0.4 (18.09.2017)
 * (MeisterTR) Update dependencies, no more error Messages on install
 #### 1.0.3 (08.09.2017)
