@@ -687,9 +687,9 @@ function main() {
 
     landroid = new LandroidCloud(adapter);
 
-    if (adapter.config.mac === "XX:XX:XX:XX:XX:XX" || adapter.config.pwd === "PASSWORT") {
+    if (adapter.config.pwd === "PASSWORT") {
 
-        adapter.log.error("Bitte email, Passwort und Mac ausfüllen");
+        adapter.log.error("Bitte email und Passwort ausfüllen");
         adapter.setState('info.connection', false, true);
     }
     else {
@@ -705,7 +705,6 @@ function main() {
         }
         adapter.log.debug('mail adress: ' + adapter.config.email);
         adapter.log.debug('password were set to: ' + adapter.config.pwd);
-        adapter.log.debug('MAC adress set to: ' + adapter.config.mac);
 
         landroid.init(updateListener);
         setInterval(checkStatus, secs * 1000);

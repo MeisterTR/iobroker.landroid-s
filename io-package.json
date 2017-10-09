@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "landroid-s",
-		"version": "1.1.5",
+		"version": "1.1.6",
     "news": {
+      "1.1.6": {
+        "en": "No Mac needed",
+        "de": "Mac Adresse wird automatisch bezogen"
+      },
       "1.1.5": {
         "en": "no OpenSSL needed, change server automaticly",
         "de": "Kein OpenSSL mehr, Serveradresse wird automatisch angepasst"
@@ -57,7 +61,6 @@
   "native": {
     "email": "max.mustermann@gmx.de",
     "pwd": "PASSWORT",
-    "mac": "XX:XX:XX:XX:XX:XX",
     "poll": "60",
     "enableJson": false,
     "houerKm": false

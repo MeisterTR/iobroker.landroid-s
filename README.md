@@ -29,9 +29,10 @@ Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installa
 
 
 ## Changelog
-#### 1.1.5 (08.10.2017)
+#### 1.1.6 (09.10.2017)
 * (MeisterTR) change cloud connection need no OpenSSL
 * (MeisterTR) Serverselction automatic form Worx Server
+* (MeisterTR) No Mac adress is needed
 #### 1.0.4 (18.09.2017)
 * (MeisterTR) Update dependencies, no more error Messages on install
 #### 1.0.3 (08.09.2017)
