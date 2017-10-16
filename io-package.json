@@ -1,468 +1,474 @@
 {
-	"common": {
-		"name": "landroid-s",
-		"version": "1.1.6",
-    "news": {
-      "1.1.6": {
-        "en": "No Mac needed",
-        "de": "Mac Adresse wird automatisch bezogen"
-      },
-      "1.1.5": {
-        "en": "no OpenSSL needed, change server automaticly",
-        "de": "Kein OpenSSL mehr, Serveradresse wird automatisch angepasst"
-      },
-      "1.0.4": {
-        "en": "Update dependencies",
-        "de": "Update npm Pakete"
-      },
-      "1.0.3": {
-        "en": "Bug fixes, small changes",
-        "de": "Fehler beseitigt und Kleinigkeiten geändert"
-      },
-      "0.3.1": {
-        "en": "add rawdata, chargecycle and actualArea",
-        "de": "Rohdaten hinzugefügt"
-      },
-      "0.3.0": {
-        "en": "add rawdata",
-        "de": "Rohdaten hinzugefügt"
-      },
-      "0.2.5": {
-        "en": "every comnfig parameter is configureable",
-        "de": "Alle unterstützten Parameter können geändert werden"
-      }
+    "common": {
+        "name": "landroid-s",
+        "version": "1.1.6",
+        "news": {
+            "1.1.6": {
+                "en": "No Mac needed",
+                "de": "Mac Adresse wird automatisch bezogen"
+            },
+            "1.1.5": {
+                "en": "no OpenSSL needed, change server automaticly",
+                "de": "Kein OpenSSL mehr, Serveradresse wird automatisch angepasst"
+            },
+            "1.0.4": {
+                "en": "Update dependencies",
+                "de": "Update npm Pakete"
+            },
+            "1.0.3": {
+                "en": "Bug fixes, small changes",
+                "de": "Fehler beseitigt und Kleinigkeiten geändert"
+            },
+            "0.3.1": {
+                "en": "add rawdata, chargecycle and actualArea",
+                "de": "Rohdaten hinzugefügt"
+            },
+            "0.3.0": {
+                "en": "add rawdata",
+                "de": "Rohdaten hinzugefügt"
+            },
+            "0.2.5": {
+                "en": "every comnfig parameter is configureable",
+                "de": "Alle unterstützten Parameter können geändert werden"
+            }
+        },
+        "title": "Worx Landroid S 2017 ",
+        "desc": {
+            "en": "Control your Landroid S 2017",
+            "de": "Steuert deinen Landroid S 2017",
+            "ru": "Control your Landroid S 2017",
+            "pt": "Control your Landroid S 2017",
+            "fr": "Control your Landroid S 2017",
+            "nl": "Control your Landroid S 2017"
+        },
+        "platform": "Javascript/Node.js",
+        "mode": "daemon",
+        "icon": "landroid-s.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/MeisterTR/iobroker.landroid-s/master/admin/landroid-s.png",
+        "keywords": [
+            "worx",
+            "landroid s",
+            "mower"
+        ],
+        "readme": "https://github.com/MeisterTR/iobroker.landroid-s/blob/master/README.md",
+        "loglevel": "info",
+        "type": "garden",
+        "restartAdapters": [
+            "vis"
+        ],
+        "authors": [
+            {
+                "name": "MeisterTR",
+                "email": "meistertr.smarthome@gmail.com"
+            }
+        ]
     },
-		"title": "Worx Landroid S 2017 ",
-		"desc": {
-			"en": "Control your Landroid S 2017",
-			"de": "Steuert deinen Landroid S 2017",
-			"ru": "Control your Landroid S 2017",
-			"pt": "Control your Landroid S 2017",
-			"fr": "Control your Landroid S 2017",
-			"nl": "Control your Landroid S 2017"
-		},
-		"platform": "Javascript/Node.js",
-		"mode": "daemon",
-		"icon": "landroid-s.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/MeisterTR/iobroker.landroid-s/master/admin/landroid-s.png",
-		"keywords": [
-			"worx",
-			"landroid s",
-			"mower"
-		],
-		"readme": "https://github.com/MeisterTR/iobroker.landroid-s/blob/master/README.md",
-		"loglevel": "info",
-		"type": "garden",
-		"restartAdapters": [
-			"vis"
-		]
-	},
-  "native": {
-    "email": "max.mustermann@gmx.de",
-    "pwd": "PASSWORT",
-    "poll": "60",
-    "enableJson": false,
-    "houerKm": false
-  },
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info",
-			"type": "channel",
-			"common": {
-				"name": "Information"
-			},
-			"native": {}
-		},
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"role": "indicator.connected",
-				"name": "If connected to CUL",
-				"type": "boolean",
-				"read": true
-			},
-			"native": {}
-		},
-		{
-			"_id": "info.firmware",
-			"type": "state",
-			"common": {
-				"name": "Firmware Version",
-				"type": "string",
-				"role": "meta.version",
-				"read": true,
-				"desc": "Firmware Version"
-			},
-			"native": {}
-		},
-		{
-			"_id": "mower",
-			"type": "channel",
-			"common": {
-				"name": "mower",
-				"role": "info"
-			},
-			"native": {}
-		},
-		{
-			"_id": "mower.batteryState",
-			"type": "state",
-			"common": {
-				"name": "Landroid battery state",
-				"type": "number",
-				"role": "value.battery",
-				"unit": "%",
-				"read": true,
-				"desc": "Landroid mower battery state in %"
-			},
-			"native": {}
-		},
-		{
-			"_id": "mower.waitRain",
-			"type": "state",
-			"common": {
-				"name": "Wait after rain",
-				"type": "number",
-				"role": "value.interval",
-				"unit": "min",
-				"read": true,
-				"desc": "Time to wait after rain, in minutes"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar",
-			"type": "channel",
-			"common": {
-				"name": "calendar",
-				"role": "calendar"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.monday",
-			"type": "channel",
-			"common": {
-				"name": "Monday",
-				"role": "calendar"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.monday.startTime",
-			"type": "state",
-			"common": {
-				"name": "Start time",
-				"type": "string",
-				"role": "value.datetime",
-				"read": true,
-				"desc": "Hour:Minutes on the day (monday) that the Landroid should start mowing"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.monday.workTime",
-			"type": "state",
-			"common": {
-				"name": "Work time",
-				"type": "number",
-				"role": "value.interval",
-				"unit": "min",
-				"read": true,
-				"desc": "Decides for how long the mower will work each day"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.monday.borderCut",
-			"type": "state",
-			"common": {
-				"name": "Border cut",
-				"type": "boolean",
-				"role": "state",
-				"read": true,
-				"desc": "The mower cut border today"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.tuesday",
-			"type": "channel",
-			"common": {
-				"name": "Tuesday",
-				"role": "calendar"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.tuesday.startTime",
-			"type": "state",
-			"common": {
-				"name": "Start time",
-				"type": "string",
-				"role": "value.datetime",
-				"read": true,
-				"desc": "Hour:Minutes on the day (tuesday) that the Landroid should start mowing"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.tuesday.workTime",
-			"type": "state",
-			"common": {
-				"name": "Work time",
-				"type": "number",
-				"role": "value.interval",
-				"unit": "min.",
-				"read": true,
-				"desc": "Decides for how long the mower will work each day"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.tuesday.borderCut",
-			"type": "state",
-			"common": {
-				"name": "Border cut",
-				"type": "boolean",
-				"role": "state",
-				"read": true,
-				"desc": "The mower cut border today"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.wednesday",
-			"type": "channel",
-			"common": {
-				"name": "Wednesday",
-				"role": "calendar"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.wednesday.startTime",
-			"type": "state",
-			"common": {
-				"name": "Start time",
-				"type": "string",
-				"role": "value.datetime",
-				"read": true,
-				"desc": "Hour:Minutes on the day (wednesday) that the Landroid should start mowing"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.wednesday.workTime",
-			"type": "state",
-			"common": {
-				"name": "Work time",
-				"type": "number",
-				"role": "value.interval",
-				"unit": "min.",
-				"read": true,
-				"desc": "Decides for how long the mower will work each day"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.wednesday.borderCut",
-			"type": "state",
-			"common": {
-				"name": "Border cut",
-				"type": "boolean",
-				"role": "state",
-				"read": true,
-				"desc": "The mower cut border today"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.thursday",
-			"type": "channel",
-			"common": {
-				"name": "Thursday",
-				"role": "calendar"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.thursday.startTime",
-			"type": "state",
-			"common": {
-				"name": "Start time",
-				"type": "string",
-				"role": "value.datetime",
-				"read": true,
-				"desc": "Hour:Minutes on the day (thursday) that the Landroid should start mowing"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.thursday.workTime",
-			"type": "state",
-			"common": {
-				"name": "Work time",
-				"type": "number",
-				"role": "value.interval",
-				"unit": "min.",
-				"read": true,
-				"desc": "Decides for how long the mower will work each day"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.thursday.borderCut",
-			"type": "state",
-			"common": {
-				"name": "Border cut",
-				"type": "boolean",
-				"role": "state",
-				"read": true,
-				"desc": "The mower cut border today"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.friday",
-			"type": "channel",
-			"common": {
-				"name": "Friday",
-				"role": "calendar"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.friday.startTime",
-			"type": "state",
-			"common": {
-				"name": "Start time",
-				"type": "string",
-				"role": "value.datetime",
-				"read": true,
-				"desc": "Hour:Minutes on the day (friday) that the Landroid should start mowing"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.friday.workTime",
-			"type": "state",
-			"common": {
-				"name": "Work time",
-				"type": "number",
-				"role": "value.interval",
-				"unit": "min.",
-				"read": true,
-				"desc": "Decides for how long the mower will work each day"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.friday.borderCut",
-			"type": "state",
-			"common": {
-				"name": "Border cut",
-				"type": "boolean",
-				"role": "state",
-				"read": true,
-				"desc": "The mower cut border today"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.saturday",
-			"type": "channel",
-			"common": {
-				"name": "Saturday",
-				"role": "calendar"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.saturday.startTime",
-			"type": "state",
-			"common": {
-				"name": "Start time",
-				"type": "string",
-				"role": "value.datetime",
-				"read": true,
-				"desc": "Hour:Minutes on the day (saturday) that the Landroid should start mowing"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.saturday.workTime",
-			"type": "state",
-			"common": {
-				"name": "Work time",
-				"type": "number",
-				"role": "value.interval",
-				"unit": "min.",
-				"read": true,
-				"desc": "Decides for how long the mower will work each day"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.saturday.borderCut",
-			"type": "state",
-			"common": {
-				"name": "Border cut",
-				"type": "boolean",
-				"role": "state",
-				"read": true,
-				"desc": "The mower cut border today"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.sunday",
-			"type": "channel",
-			"common": {
-				"name": "Sunday",
-				"role": "calendar"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.sunday.startTime",
-			"type": "state",
-			"common": {
-				"name": "Start time",
-				"type": "string",
-				"role": "value.datetime",
-				"read": true,
-				"desc": "Hour:Minutes on the day (sunday) that the Landroid should start mowing"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.sunday.workTime",
-			"type": "state",
-			"common": {
-				"name": "Work time",
-				"type": "number",
-				"role": "value.interval",
-				"unit": "min.",
-				"read": true,
-				"desc": "Decides for how long the mower will work each day"
-			},
-			"native": {}
-		},
-		{
-			"_id": "calendar.sunday.borderCut",
-			"type": "state",
-			"common": {
-				"name": "Border cut",
-				"type": "boolean",
-				"role": "state",
-				"read": true,
-				"desc": "The mower cut border today"
-			},
-			"native": {}
-		}
-	]
+    "native": {
+        "email": "max.mustermann@gmx.de",
+        "pwd": "PASSWORT",
+        "poll": "60",
+        "enableJson": false,
+        "houerKm": false
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "If connected to CUL",
+                "type": "boolean",
+                "read": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.firmware",
+            "type": "state",
+            "common": {
+                "name": "Firmware Version",
+                "type": "string",
+                "role": "meta.version",
+                "read": true,
+                "desc": "Firmware Version"
+            },
+            "native": {}
+        },
+        {
+            "_id": "mower",
+            "type": "channel",
+            "common": {
+                "name": "mower",
+                "role": "info"
+            },
+            "native": {}
+        },
+        {
+            "_id": "mower.batteryState",
+            "type": "state",
+            "common": {
+                "name": "Landroid battery state",
+                "type": "number",
+                "role": "value.battery",
+                "unit": "%",
+                "read": true,
+                "desc": "Landroid mower battery state in %"
+            },
+            "native": {}
+        },
+        {
+            "_id": "mower.waitRain",
+            "type": "state",
+            "common": {
+                "name": "Wait after rain",
+                "type": "number",
+                "role": "value.interval",
+                "unit": "min",
+                "read": true,
+                "desc": "Time to wait after rain, in minutes"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar",
+            "type": "channel",
+            "common": {
+                "name": "calendar",
+                "role": "calendar"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.monday",
+            "type": "channel",
+            "common": {
+                "name": "Monday",
+                "role": "calendar"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.monday.startTime",
+            "type": "state",
+            "common": {
+                "name": "Start time",
+                "type": "string",
+                "role": "value.datetime",
+                "read": true,
+                "desc": "Hour:Minutes on the day (monday) that the Landroid should start mowing"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.monday.workTime",
+            "type": "state",
+            "common": {
+                "name": "Work time",
+                "type": "number",
+                "role": "value.interval",
+                "unit": "min",
+                "read": true,
+                "desc": "Decides for how long the mower will work each day"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.monday.borderCut",
+            "type": "state",
+            "common": {
+                "name": "Border cut",
+                "type": "boolean",
+                "role": "state",
+                "read": true,
+                "desc": "The mower cut border today"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.tuesday",
+            "type": "channel",
+            "common": {
+                "name": "Tuesday",
+                "role": "calendar"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.tuesday.startTime",
+            "type": "state",
+            "common": {
+                "name": "Start time",
+                "type": "string",
+                "role": "value.datetime",
+                "read": true,
+                "desc": "Hour:Minutes on the day (tuesday) that the Landroid should start mowing"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.tuesday.workTime",
+            "type": "state",
+            "common": {
+                "name": "Work time",
+                "type": "number",
+                "role": "value.interval",
+                "unit": "min.",
+                "read": true,
+                "desc": "Decides for how long the mower will work each day"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.tuesday.borderCut",
+            "type": "state",
+            "common": {
+                "name": "Border cut",
+                "type": "boolean",
+                "role": "state",
+                "read": true,
+                "desc": "The mower cut border today"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.wednesday",
+            "type": "channel",
+            "common": {
+                "name": "Wednesday",
+                "role": "calendar"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.wednesday.startTime",
+            "type": "state",
+            "common": {
+                "name": "Start time",
+                "type": "string",
+                "role": "value.datetime",
+                "read": true,
+                "desc": "Hour:Minutes on the day (wednesday) that the Landroid should start mowing"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.wednesday.workTime",
+            "type": "state",
+            "common": {
+                "name": "Work time",
+                "type": "number",
+                "role": "value.interval",
+                "unit": "min.",
+                "read": true,
+                "desc": "Decides for how long the mower will work each day"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.wednesday.borderCut",
+            "type": "state",
+            "common": {
+                "name": "Border cut",
+                "type": "boolean",
+                "role": "state",
+                "read": true,
+                "desc": "The mower cut border today"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.thursday",
+            "type": "channel",
+            "common": {
+                "name": "Thursday",
+                "role": "calendar"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.thursday.startTime",
+            "type": "state",
+            "common": {
+                "name": "Start time",
+                "type": "string",
+                "role": "value.datetime",
+                "read": true,
+                "desc": "Hour:Minutes on the day (thursday) that the Landroid should start mowing"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.thursday.workTime",
+            "type": "state",
+            "common": {
+                "name": "Work time",
+                "type": "number",
+                "role": "value.interval",
+                "unit": "min.",
+                "read": true,
+                "desc": "Decides for how long the mower will work each day"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.thursday.borderCut",
+            "type": "state",
+            "common": {
+                "name": "Border cut",
+                "type": "boolean",
+                "role": "state",
+                "read": true,
+                "desc": "The mower cut border today"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.friday",
+            "type": "channel",
+            "common": {
+                "name": "Friday",
+                "role": "calendar"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.friday.startTime",
+            "type": "state",
+            "common": {
+                "name": "Start time",
+                "type": "string",
+                "role": "value.datetime",
+                "read": true,
+                "desc": "Hour:Minutes on the day (friday) that the Landroid should start mowing"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.friday.workTime",
+            "type": "state",
+            "common": {
+                "name": "Work time",
+                "type": "number",
+                "role": "value.interval",
+                "unit": "min.",
+                "read": true,
+                "desc": "Decides for how long the mower will work each day"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.friday.borderCut",
+            "type": "state",
+            "common": {
+                "name": "Border cut",
+                "type": "boolean",
+                "role": "state",
+                "read": true,
+                "desc": "The mower cut border today"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.saturday",
+            "type": "channel",
+            "common": {
+                "name": "Saturday",
+                "role": "calendar"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.saturday.startTime",
+            "type": "state",
+            "common": {
+                "name": "Start time",
+                "type": "string",
+                "role": "value.datetime",
+                "read": true,
+                "desc": "Hour:Minutes on the day (saturday) that the Landroid should start mowing"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.saturday.workTime",
+            "type": "state",
+            "common": {
+                "name": "Work time",
+                "type": "number",
+                "role": "value.interval",
+                "unit": "min.",
+                "read": true,
+                "desc": "Decides for how long the mower will work each day"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.saturday.borderCut",
+            "type": "state",
+            "common": {
+                "name": "Border cut",
+                "type": "boolean",
+                "role": "state",
+                "read": true,
+                "desc": "The mower cut border today"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.sunday",
+            "type": "channel",
+            "common": {
+                "name": "Sunday",
+                "role": "calendar"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.sunday.startTime",
+            "type": "state",
+            "common": {
+                "name": "Start time",
+                "type": "string",
+                "role": "value.datetime",
+                "read": true,
+                "desc": "Hour:Minutes on the day (sunday) that the Landroid should start mowing"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.sunday.workTime",
+            "type": "state",
+            "common": {
+                "name": "Work time",
+                "type": "number",
+                "role": "value.interval",
+                "unit": "min.",
+                "read": true,
+                "desc": "Decides for how long the mower will work each day"
+            },
+            "native": {}
+        },
+        {
+            "_id": "calendar.sunday.borderCut",
+            "type": "state",
+            "common": {
+                "name": "Border cut",
+                "type": "boolean",
+                "role": "state",
+                "read": true,
+                "desc": "The mower cut border today"
+            },
+            "native": {}
+        }
+    ]
 }
