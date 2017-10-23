@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "landroid-s",
-        "version": "1.1.6",
+        "version": "1.1.7",
         "news": {
-            "1.1.6": {
+            "1.1.7": {
                 "en": "No Mac needed",
                 "de": "Mac Adresse wird automatisch bezogen"
             },

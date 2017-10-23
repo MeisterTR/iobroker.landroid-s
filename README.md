@@ -21,7 +21,6 @@ Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von di
 
 ## Einstellungen
 - Bei E-mail und Passwort müssen die Daten eingeben werden, mit denen man bei Worx registriert ist.
-- Die Mac Adresse findet man, wenn man in der App auf erweiterte Einstellungen geht.
 - Der Intervall ist der Abstand in dem die Werte aktualisiert werden.  Dies ist aber nur interessant für den Akkustand und andere, da der Roboter bei wichtigen Ereignissen (Error oder Mähen) selber Nachrichten an den Adapter schickt.
 
 ### Wechsel von 0.X.X auf 1.X.X
@@ -29,7 +28,8 @@ Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installa
 
 
 ## Changelog
-#### 1.1.6 (09.10.2017)
+#### 1.1.7 (09.10.2017)
+* (MeisterTR) hard coded guest-token
 * (MeisterTR) change cloud connection need no OpenSSL
 * (MeisterTR) Serverselction automatic form Worx Server
 * (MeisterTR) No Mac adress is needed
