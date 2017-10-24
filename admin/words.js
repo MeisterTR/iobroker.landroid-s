@@ -2,7 +2,7 @@
 systemDictionary = {
 	"NEW Landroid S 2017":		{"en": "NEW Landroid S 2017", "de": "NEU Landroid S 2017", "ru": "NEW Landroid S 2017"},
 	"settings":                    {"en": "settings", "de": "Einstellungen", "ru": "настройки"},
-	"e-mail":                    {"en": "email", "de": "E-mail", "ru": "Электронная почта"},
+	"e-mail":                    {"en": "email", "de": "E-Mail", "ru": "Электронная почта"},
 	"password":                    {"en": "password", "de": "Passwort", "ru": "пароль"},
 	"MAC address":                  {"en": "MAC address", "de": "MAC Adresse", "ru": "MAC address"},
 	"interval in sec.":                    {"en": "interval in sec.", "de": "Intervall in Sek.", "ru": "interval in sec."},
@@ -11,7 +11,7 @@ systemDictionary = {
     "sslpath": { "en": "only for Windows SSl Path is different", "de": "Nur für Windows falls Pfad abweicht", "ru": "only for Windows SSl Path is different" },
 
 	"on save adapter restarts with new config immediately": {
-		"de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
+		"de": "Beim Speichern von Einstellungen wird der Adapter sofort neu gestartet.",
 		"ru": "����� ����� ���������� �������� ������� ��������������� � ������ ����������"
 	}
 };
