@@ -558,7 +558,7 @@ function procedeLandroidS() {
 
 function changeUnit(unitset) {
     var array = ['.mower.totalDistance', '.mower.totalBladeTime', '.mower.totalTime'];
-    for (var i = 0; i <= array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
         adapter.extendObject(adapter.namespace + array[i], { common: { unit: unitset[i] } });
     }
 }
@@ -689,7 +689,7 @@ function main() {
 
     if (adapter.config.pwd === "PASSWORT") {
 
-        adapter.log.error("Bitte email und Passwort ausfüllen");
+        adapter.log.error("Bitte die Felder E-Mail und Passwort ausfüllen!");
         adapter.setState('info.connection', false, true);
     }
     else {
@@ -703,8 +703,8 @@ function main() {
         if (isNaN(secs) || secs < 1) {
             secs = 60;
         }
-        adapter.log.debug('mail adress: ' + adapter.config.email);
-        adapter.log.debug('password were set to: ' + adapter.config.pwd);
+        adapter.log.debug('Mail address: ' + adapter.config.email);
+        adapter.log.debug('Password were set to: ' + adapter.config.pwd);
 
         landroid.init(updateListener);
         setInterval(checkStatus, secs * 1000);
