@@ -4,7 +4,7 @@
 
 // you have to require the utils module and call adapter function
 var utils = require(__dirname + '/lib/utils'); // Get common adapter utils
-var adapter = utils.adapter('landroid-s');
+var adapter = utils.Adapter('landroid-s');
 var LandroidCloud = require(__dirname + '/lib/landroid-cloud-2');
 var landroidS = require(__dirname + '/responses/landroid-s.json');
 
