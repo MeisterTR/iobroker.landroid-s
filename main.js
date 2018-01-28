@@ -699,7 +699,7 @@ function main() {
 
         if (firstSet) procedeLandroidS();
 
-        var secs = adapter.config.poll;
+        //var secs = adapter.config.poll;
         if (isNaN(secs) || secs < 1) {
             secs = 60;
         }
@@ -707,7 +707,7 @@ function main() {
         adapter.log.debug('Password were set to: ' + adapter.config.pwd);
 
         landroid.init(updateListener);
-        setInterval(checkStatus, secs * 1000);
+        //setInterval(checkStatus, secs * 1000);
         adapter.subscribeStates('*');
     }
 
