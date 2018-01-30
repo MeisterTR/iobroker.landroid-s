@@ -1,4 +1,4 @@
-![Logo](admin/landroid-s.png)
+![Logo](admin/landroid-s2.png)
 ioBroker.landroid-s
 =============
 
@@ -28,6 +28,8 @@ Bitte Adapter vor Update deinstallieren, da einige Objekte erst bei der Installa
 
 
 ## Changelog
+#### 2.0.0 (09.10.2017)
+* (MeisterTR) admin3, del Polling
 #### 1.1.7 (09.10.2017)
 * (MeisterTR) hard coded guest-token
 * (MeisterTR) change cloud connection need no OpenSSL

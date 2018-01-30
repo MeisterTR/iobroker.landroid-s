@@ -1,17 +1,86 @@
+'use strict';
 // Dictionary (systemDictionary is global variable from adapter-settings.js)
-systemDictionary = {
-	"NEW Landroid S 2017":		{"en": "NEW Landroid S 2017", "de": "NEU Landroid S 2017", "ru": "NEW Landroid S 2017"},
-	"settings":                    {"en": "settings", "de": "Einstellungen", "ru": "настройки"},
-	"e-mail":                    {"en": "email", "de": "E-Mail", "ru": "Электронная почта"},
-	"password":                    {"en": "password", "de": "Passwort", "ru": "пароль"},
-	"MAC address":                  {"en": "MAC address", "de": "MAC Adresse", "ru": "MAC address"},
-	"interval in sec.":                    {"en": "interval in sec.", "de": "Intervall in Sek.", "ru": "interval in sec."},
-	"add raw data":                    {"en": "add raw data", "de": "Rohdaten anzeigen und senden", "ru": "add raw data"},
-    "Distance and time in min and m": { "en": "Distance and time in min and m", "de": "Distanz und Laufzeit in Min. und Meter", "ru": "Distance and time in min and m" },
-    "sslpath": { "en": "only for Windows SSl Path is different", "de": "Nur für Windows falls Pfad abweicht", "ru": "only for Windows SSl Path is different" },
 
-	"on save adapter restarts with new config immediately": {
-		"de": "Beim Speichern von Einstellungen wird der Adapter sofort neu gestartet.",
-		"ru": "����� ����� ���������� �������� ������� ��������������� � ������ ����������"
-	}
+systemDictionary = {
+    "title": {
+        "en": "Landroid-S Adapter (cloud based)",
+        "de": "Landroid-S Adapter (Cloud-basiert)",
+        "ru": "Адаптер Landroid-S (облачный)",
+        "pt": "Adaptador Landroid-S (baseado na nuvem)",
+        "nl": "Landroid-S-adapter (op basis van cloud)",
+        "fr": "Landroid-S Adapter (basé sur le cloud)",
+        "it": "Landroid-S Adapter (basato sulla cloud)",
+        "es": "Adaptador Landroid-S (basado en la nube)",
+        "pl": "Adapter Landroid-S (oparty na chmurze)"
+    },
+    "connection settings": {
+        "en": "connection settings",
+        "de": "Verbindungseinstellungen",
+        "ru": "Настройки соединения",
+        "pt": "configurações de conexão",
+        "nl": "verbindingsinstellingen",
+        "fr": "paramètres de connexion",
+        "it": "impostazioni di connessione",
+        "es": "configuración de conexión",
+        "pl": "ustawienia połączenia"
+    },
+    "additional settings": {
+        "en": "additional settings",
+        "de": "zusätzliche Einstellungen",
+        "ru": "дополнительные настройки",
+        "pt": "Configurações adicionais",
+        "nl": "aanvullende instellingen",
+        "fr": "paramètres additionnels",
+        "it": "altre impostazioni",
+        "es": "ajustes adicionales",
+        "pl": "dodatkowe ustawienia"
+    },
+    "e-mail": {
+        "en": "e-mail",
+        "de": "Email",
+        "ru": "Эл. почта",
+        "pt": "o email",
+        "nl": "e-mail",
+        "fr": "email",
+        "it": "e-mail",
+        "es": "correo electrónico",
+        "pl": "e-mail"
+    },
+    "password": {
+        "en": "password",
+        "de": "Passwort",
+        "ru": "пароль",
+        "pt": "senha",
+        "nl": "wachtwoord",
+        "fr": "mot de passe",
+        "it": "parola d'ordine",
+        "es": "contraseña",
+        "pl": "hasło"
+    },
+
+    "add raw data": {
+        "en": "add raw data",
+        "de": "Rohdaten hinzufügen",
+        "ru": "добавить необработанные данные",
+        "pt": "adicionar dados brutos",
+        "nl": "voeg onbewerkte gegevens toe",
+        "fr": "ajouter des données brutes",
+        "it": "aggiungi dati grezzi",
+        "es": "agregar datos sin procesar",
+        "pl": "dodaj surowe dane"
+    },
+
+    "Distance and time in min and m": {
+        "en": "Distance and time in min and m",
+        "de": "Entfernung und Zeit in min und m",
+        "ru": "Расстояние и время в мин и м",
+        "pt": "Distância e tempo em min e m",
+        "nl": "Afstand en tijd in min en m",
+        "fr": "Distance et temps en min et m",
+        "it": "Distanza e tempo in min e m",
+        "es": "Distancia y tiempo en minutos y m",
+        "pl": "Odległość i czas w minutach i m"
+    },
+
+
 };

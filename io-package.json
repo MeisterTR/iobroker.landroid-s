@@ -1,69 +1,95 @@
 {
-    "common": {
-        "name": "landroid-s",
-        "version": "1.1.7",
-        "news": {
-            "1.1.7": {
-                "en": "No Mac needed",
-                "de": "Mac Adresse wird automatisch bezogen"
-            },
-            "1.1.5": {
-                "en": "no OpenSSL needed, change server automaticly",
-                "de": "Kein OpenSSL mehr, Serveradresse wird automatisch angepasst"
-            },
-            "1.0.4": {
-                "en": "Update dependencies",
-                "de": "Update npm Pakete"
-            },
-            "1.0.3": {
-                "en": "Bug fixes, small changes",
-                "de": "Fehler beseitigt und Kleinigkeiten geändert"
-            },
-            "0.3.1": {
-                "en": "add rawdata, chargecycle and actualArea",
-                "de": "Rohdaten hinzugefügt"
-            },
-            "0.3.0": {
-                "en": "add rawdata",
-                "de": "Rohdaten hinzugefügt"
-            },
-            "0.2.5": {
-                "en": "every comnfig parameter is configureable",
-                "de": "Alle unterstützten Parameter können geändert werden"
-            }
-        },
-        "title": "Worx Landroid S 2017 ",
-        "desc": {
-            "en": "Control your Landroid S 2017",
-            "de": "Steuert deinen Landroid S 2017",
-            "ru": "Control your Landroid S 2017",
-            "pt": "Control your Landroid S 2017",
-            "fr": "Control your Landroid S 2017",
-            "nl": "Control your Landroid S 2017"
-        },
-        "platform": "Javascript/Node.js",
-        "mode": "daemon",
-        "icon": "landroid-s.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/MeisterTR/iobroker.landroid-s/master/admin/landroid-s.png",
-        "keywords": [
-            "worx",
-            "landroid s",
-            "mower"
-        ],
-        "readme": "https://github.com/MeisterTR/iobroker.landroid-s/blob/master/README.md",
-        "loglevel": "info",
-        "type": "garden",
-        "restartAdapters": [
-            "vis"
-        ],
-        "authors": [
-            {
-                "name": "MeisterTR",
-                "email": "meistertr.smarthome@gmail.com"
-            }
-        ]
+  "common": {
+    "name": "landroid-s",
+    "version": "2.0.0",
+    "news": {
+      "2.0.0": {
+        "en": "Admin3, no polling",
+        "de": "Admin3, keine Abfrage",
+        "ru": "Admin3, нет опроса",
+        "pt": "Admin3, sem polling",
+        "nl": "Admin3, geen polling",
+        "fr": "Admin3, pas d'interrogation",
+        "it": "Admin3, nessun sondaggio",
+        "es": "Admin3, sin votación",
+        "pl": "Admin3, bez odpytywania"
+      },
+      "1.1.7": {
+        "en": "No Mac needed",
+        "de": "Mac Adresse wird automatisch bezogen"
+      },
+      "1.1.5": {
+        "en": "no OpenSSL needed, change server automaticly",
+        "de": "Kein OpenSSL mehr, Serveradresse wird automatisch angepasst"
+      },
+      "1.0.4": {
+        "en": "Update dependencies",
+        "de": "Update npm Pakete"
+      },
+      "1.0.3": {
+        "en": "Bug fixes, small changes",
+        "de": "Fehler beseitigt und Kleinigkeiten geändert"
+      },
+      "0.3.1": {
+        "en": "add rawdata, chargecycle and actualArea",
+        "de": "Rohdaten hinzugefügt"
+      },
+      "0.3.0": {
+        "en": "add rawdata",
+        "de": "Rohdaten hinzugefügt"
+      },
+      "0.2.5": {
+        "en": "every comnfig parameter is configureable",
+        "de": "Alle unterstützten Parameter können geändert werden"
+      }
     },
+    "title": "Worx Landroid S",
+    "titleLang": {
+      "en": "Control your Landroid S over cloud",
+      "de": "Steuern Sie Ihren Landroid S über die Cloud",
+      "ru": "Управляйте своим Landroid S над облаком",
+      "pt": "Controle o seu Landroid S sobre a nuvem",
+      "nl": "Bedien uw Landroid S via de cloud",
+      "fr": "Contrôlez votre Landroid S sur le cloud",
+      "it": "Controlla il tuo Landroid S su cloud",
+      "es": "Controle su Landroid S sobre la nube",
+      "pl": "Kontroluj chmurę Landroida S przez chmurę"
+    },
+    "desc": {
+      "en": "Control your Landroid S",
+      "de": "Steuere deinen Landroid S",
+      "ru": "Контролируйте свой Landroid S",
+      "pt": "Controle seu Landroid S",
+      "nl": "Bedien uw Landroid S",
+      "fr": "Contrôlez votre Landroid S",
+      "it": "Controlla il tuo Landroid S",
+      "es": "Controle su Landroid S",
+      "pl": "Kontroluj swój Landroid S"
+    },
+    "materialize": true,
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "icon": "landroid-s.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/MeisterTR/iobroker.landroid-s/master/admin/landroid-s.png",
+    "keywords": [
+      "worx",
+      "landroid s",
+      "mower"
+    ],
+    "readme": "https://github.com/MeisterTR/iobroker.landroid-s/blob/master/README.md",
+    "loglevel": "info",
+    "type": "garden",
+    "restartAdapters": [
+      "vis"
+    ],
+    "authors": [
+      {
+        "name": "MeisterTR",
+        "email": "meistertr.smarthome@gmail.com"
+      }
+    ]
+  },
     "native": {
         "email": "max.mustermann@gmx.de",
         "pwd": "PASSWORT",
