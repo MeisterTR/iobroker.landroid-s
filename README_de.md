@@ -12,17 +12,15 @@ ioBroker.landroid-s
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/MeisterTR/ioBroker.landroid-s?branch=master&svg=true)](https://ci.appveyor.com/project/MeisterTR/ioBroker-landroid-s/)
 
 
-[Deutsche Beschreibung hier](README_de.md)
+Dieser Adapter verbindet IoBroker mit deinem Landroid S Modell 2017
+Es werden Temperaturen, Mähzeiten, Akkustand und diverse weitere Daten ausgelesen
+Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geändert werden.
 
-This adapter connects IoBroker with your Landroid S Model 
-Temperatures, mowing times, battery level and various other data are read out from the mower
-The adapter can control the mower and you can change config params like mowtimes.
+## Installation
+Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von diesem Adapter nicht mehr unterstützt.
 
-## installation
-At least Node 4.X.X must be installed, Node 0.10 and 0.12 are no longer supported by this adapter.
-
-## settings
-- to connect to the mower type in email and password from your worx account in the Config.
+## Einstellungen
+- Bei E-mail und Passwort müssen die Daten eingeben werden, mit denen man bei Worx registriert ist.
 
 ## Changelog
 #### 2.0.0 (31.01.2018)
