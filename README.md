@@ -25,6 +25,8 @@ At least Node 4.X.X must be installed, Node 0.10 and 0.12 are no longer supporte
 - to connect to the mower type in email and password from your worx account in the Config.
 
 ## Changelog
+#### 2.0.1 (31.01.2018)
+* (MeisterTR) connection problem with new mower fixed 
 #### 2.0.0 (31.01.2018)
 * (MeisterTR) admin3, del Polling
 #### 1.1.7 (09.10.2017)

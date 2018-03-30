@@ -1,8 +1,19 @@
 {
   "common": {
     "name": "landroid-s",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "news": {
+      "2.0.1": {
+        "en": "connection problem with new mower fixed ",
+        "de": "Verbindungsproblem mit neuem Mäher behoben",
+        "ru": "проблема подключения с новой косилкой",
+        "pt": "problema de conexão com novo cortador fixo",
+        "nl": "verbindingsprobleem met nieuwe maaier hersteld",
+        "fr": "problème de connexion avec la nouvelle tondeuse fixée",
+        "it": "problema di connessione con il nuovo tosaerba riparato",
+        "es": "problema de conexión con la nueva podadora fija",
+        "pl": "problem z połączeniem z nową kosiarką naprawiono"
+      },
       "2.0.0": {
         "en": "Admin3, no polling",
         "de": "Admin3, keine Abfrage",
