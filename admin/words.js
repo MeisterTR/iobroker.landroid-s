@@ -82,5 +82,17 @@ systemDictionary = {
         "pl": "Odległość i czas w minutach i m"
     },
 
+    "mower select": {
+        "en": "mower select",
+        "de": "Mäher wählen",
+        "ru": "выбор косилки",
+        "pt": "segadeira selecione",
+        "nl": "maaier selecteren",
+        "fr": "tondeuse sélectionner",
+        "it": "tosaerba selezionare",
+        "es": "selección del cortacésped",
+        "pl": "kosiarka wybierz"
+    }
+
 
 };

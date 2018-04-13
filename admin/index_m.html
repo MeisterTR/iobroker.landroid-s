@@ -1,35 +1,51 @@
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
+    <!-- these 4 files always have to be included -->
     <link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
+
     <script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+
+    <!-- these files always have to be included -->
     <script type="text/javascript" src="../../js/translate.js"></script>
     <script type="text/javascript" src="../../lib/js/materialize.js"></script>
     <script type="text/javascript" src="../../js/adapter-settings.js"></script>
     <script type="text/javascript" src="words.js"></script>
+    <style>
+        .m .col .select-wrapper + label {
+            top: -26px;
+        }
+
+        .m span {
+            font-size: 0.9em;
+        }
+    </style>
     <!-- you have to define 2 functions in the global scope: -->
     <script type="text/javascript">
         // the function loadSettings has to exist ...
         function load(settings, onChange) {
             // example: select elements with id=key and class=value and insert value
-            for (var key in settings) {
-                // example: select elements with id=key and class=value and insert value
-                var value = $('#' + key + '.value');
-                if (value.attr('type') === 'checkbox') {
-                    value.prop('checked', settings[key]).change(function () {
+            if (!settings) return;
+            $('.value').each(function () {
+                var $key = $(this);
+                var id = $key.attr('id');
+                if ($key.attr('type') === 'checkbox') {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.prop('checked', settings[id]).change(function () {
                         onChange();
                     });
                 } else {
-                    value.val(settings[key]).change(function () {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.val(settings[id]).change(function () {
                         onChange();
                     }).keyup(function () {
-                        $(this).trigger('change');
+                        onChange();
                     });
                 }
-            }
-            // Signal to admin, that no changes yet
+            });
             onChange(false);
+            M.updateTextFields();  // function Materialize.updateTextFields(); to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.
         }
         // ... and the function save has to exist.
         // you have to make sure the callback is called with the settings object as first param!
@@ -70,15 +86,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12">
+                <div class="input-field  col s12">
                     <input class="value" id="email" type="text" />
                     <label for="email" class="translate">e-mail</label>
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 m4 l2">
-                    <input class="value" id="pwd" type="text" />
-                    <label class="translate" for="pwd">password</label>
+                <div class="input-field col s12 m4 l2">
+                    <input type="text" class="value" id="pwd" />
+                    <label for="pwd" class="translate">password</label>
+
+                </div>
+
+                <div class="input-field col s1 m1">
+                    <select class="value" id="dev_sel">
+                        <option value=0>0</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                    </select>
+                    <label for="dev_sel" class="translate">mower select</label>
+                    <!-- Important: label must come directly after select. Label is important. -->
                 </div>
             </div>
             <div class="divider"></div>

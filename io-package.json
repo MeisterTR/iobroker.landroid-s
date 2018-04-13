@@ -3,6 +3,17 @@
     "name": "landroid-s",
     "version": "2.0.1",
     "news": {
+      "2.1.0": {
+        "en": "add mower selection",
+        "de": "Mäherauswahl hinzufügen",
+        "ru": "добавить подбор косилки",
+        "pt": "adicionar seleção de cortador",
+        "nl": "voeg maaier selectie toe",
+        "fr": "ajouter une sélection de tondeuse",
+        "it": "aggiungere la selezione della falciatrice",
+        "es": "agregar la selección del cortacésped",
+        "pl": "dodać wybór kosiarki"
+      },
       "2.0.1": {
         "en": "connection problem with new mower fixed ",
         "de": "Verbindungsproblem mit neuem Mäher behoben",
@@ -104,7 +115,7 @@
     "native": {
         "email": "max.mustermann@gmx.de",
         "pwd": "PASSWORT",
-        "poll": "60",
+        "dev_sel": 0,
         "enableJson": false,
         "houerKm": false
     },
