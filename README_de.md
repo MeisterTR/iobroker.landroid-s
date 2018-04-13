@@ -23,7 +23,7 @@ Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von di
 - Bei E-mail und Passwort müssen die Daten eingeben werden, mit denen man bei Worx registriert ist.
 
 ## Changelog
-#### 2.1.0 (13.04.2018)
+#### 2.1.1 (13.04.2018)
 * (MeisterTR) add mower selection
 #### 2.0.1 (31.01.2018)
 * (MeisterTR) connection problem with new mower fixed
