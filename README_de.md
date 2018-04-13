@@ -22,9 +22,13 @@ Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von di
 ## Einstellungen
 - Bei E-mail und Passwort müssen die Daten eingeben werden, mit denen man bei Worx registriert ist.
 
+## zweiter Mäher
+- Sollen zwei Mäher eingebunden werden, muss eine zweite Instanz installiert werden, In der einen Wird in der Config Mäher 0 und in der zweiten Mäher 1 ausgewählt und so weiter..
+
+
 ## Changelog
-#### 2.1.1 (13.04.2018)
-* (MeisterTR) add mower selection
+#### 2.1.2 (13.04.2018)
+* (MeisterTR) add mower selection, clean up, remove CA
 #### 2.0.1 (31.01.2018)
 * (MeisterTR) connection problem with new mower fixed
 #### 2.0.0 (31.01.2018)

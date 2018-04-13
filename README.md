@@ -24,9 +24,13 @@ At least Node 4.X.X must be installed, Node 0.10 and 0.12 are no longer supporte
 ## settings
 - to connect to the mower type in email and password from your worx account in the Config.
 
+
+## second mower
+-If two mowers are to be integrated, a second instance must be installed, one is selected in the Config mower 0 and in the second mower 1 and so on.
+
 ## Changelog
-#### 2.1.1 (13.04.2018)
-* (MeisterTR) add mower selection
+#### 2.1.2 (13.04.2018)
+* (MeisterTR) add mower selection, clean up, remove CA
 #### 2.0.1 (31.01.2018)
 * (MeisterTR) connection problem with new mower fixed 
 #### 2.0.0 (31.01.2018)

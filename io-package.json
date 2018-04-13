@@ -1,10 +1,10 @@
 {
   "common": {
     "name": "landroid-s",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "news": {
-      "2.1.1": {
-        "en": "add mower selection",
+      "2.1.2": {
+        "en": "add mower selection, clean up, remove CA",
         "de": "Mäherauswahl hinzufügen",
         "ru": "добавить подбор косилки",
         "pt": "adicionar seleção de cortador",
