@@ -4,7 +4,6 @@ ioBroker.landroid-s
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.landroid-s.svg)](https://www.npmjs.com/package/iobroker.landroid-s)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.landroid-s.svg)](https://www.npmjs.com/package/iobroker.landroid-s)
-[![bitHound Overall Score](https://www.bithound.io/github/MeisterTR/ioBroker.landroid-s/badges/score.svg)](https://www.bithound.io/github/MeisterTR/iobroker.landroid-s)
 
 [![NPM](https://nodei.co/npm/iobroker.landroid-s.png?downloads=true)](https://nodei.co/npm/iobroker.landroid-s/)
 
