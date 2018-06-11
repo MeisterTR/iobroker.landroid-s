@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "landroid-s",
-    "version": "2.1.2",
+    "version": "2.1.3",
     "news": {
       "2.1.2": {
         "en": "add mower selection, clean up, remove CA",
@@ -67,26 +67,26 @@
     },
     "title": "Worx Landroid S",
     "titleLang": {
-      "en": "Control your Landroid S over cloud",
-      "de": "Steuern Sie Ihren Landroid S über die Cloud",
-      "ru": "Управляйте своим Landroid S над облаком",
-      "pt": "Controle o seu Landroid S sobre a nuvem",
-      "nl": "Bedien uw Landroid S via de cloud",
-      "fr": "Contrôlez votre Landroid S sur le cloud",
-      "it": "Controlla il tuo Landroid S su cloud",
-      "es": "Controle su Landroid S sobre la nube",
-      "pl": "Kontroluj chmurę Landroida S przez chmurę"
+      "en": "Control Landroid S over cloud",
+      "de": "Landroid S über die Cloud steuern",
+      "ru": "Управление Landroid S над облаком",
+      "pt": "Controle Landroid S sobre nuvem",
+      "nl": "Bestuur Landroid S via cloud",
+      "fr": "Contrôler Landroid S sur le cloud",
+      "it": "Controlla Landroid S su cloud",
+      "es": "Controle Landroid S sobre la nube",
+      "pl": "Kontroluj Landroid S przez chmurę"
     },
     "desc": {
-      "en": "Control your Landroid S",
-      "de": "Steuere deinen Landroid S",
-      "ru": "Контролируйте свой Landroid S",
-      "pt": "Controle seu Landroid S",
-      "nl": "Bedien uw Landroid S",
-      "fr": "Contrôlez votre Landroid S",
-      "it": "Controlla il tuo Landroid S",
-      "es": "Controle su Landroid S",
-      "pl": "Kontroluj swój Landroid S"
+      "en": "The mower is connected via worx cloud to iobroker",
+      "de": "Der Mäher ist über die Worx Cloud mit iobroker verbunden",
+      "ru": "косилка подключается через облако worx к iobroker",
+      "pt": "o cortador está conectado via nuvem worx ao iobroker",
+      "nl": "de maaier is verbonden via worx cloud met iobroker",
+      "fr": "la tondeuse est connectée via worx cloud à iobroker",
+      "it": "il rasaerba è collegato tramite worx cloud a iobroker",
+      "es": "el cortacésped está conectado a través de la nube worx a iobroker",
+      "pl": "kosiarka jest połączona przez chmurę worx z iobroker"
     },
     "materialize": true,
     "platform": "Javascript/Node.js",
