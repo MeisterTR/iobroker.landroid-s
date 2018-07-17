@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "landroid-s",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "news": {
-      "2.2.1": {
+      "2.2.2": {
         "en": "support of Landroid M FW> 5.0.0",
         "de": "Unterstützung von Landroid M FW> 5.0.0",
         "ru": "поддержка Landroid M FW> 5.0.0",
