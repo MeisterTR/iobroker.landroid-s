@@ -1,8 +1,19 @@
 {
   "common": {
     "name": "landroid-s",
-    "version": "2.1.3",
+    "version": "2.2.0",
     "news": {
+      "2.2.0": {
+        "en": "support of Landroid M FW> 5.0.0",
+        "de": "Unterstützung von Landroid M FW> 5.0.0",
+        "ru": "поддержка Landroid M FW> 5.0.0",
+        "pt": "suporte de Landroid M FW> 5.0.0",
+        "nl": "ondersteuning van Landroid M FW> 5.0.0",
+        "fr": "support de Landroid M FW> 5.0.0",
+        "it": "supporto di Landroid M FW> 5.0.0",
+        "es": "soporte de Landroid M FW> 5.0.0",
+        "pl": "wsparcie dla Landroid M FW> 5.0.0"
+      },
       "2.1.2": {
         "en": "add mower selection, clean up, remove CA",
         "de": "Mäherauswahl hinzufügen",

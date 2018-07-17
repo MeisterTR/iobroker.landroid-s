@@ -12,7 +12,7 @@ ioBroker.landroid-s
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/MeisterTR/ioBroker.landroid-s?branch=master&svg=true)](https://ci.appveyor.com/project/MeisterTR/ioBroker-landroid-s/)
 
 
-Dieser Adapter verbindet IoBroker mit deinem Landroid S Modell 2017
+Dieser Adapter verbindet IoBroker mit deinem Landroid S oder Landroid M mit Firmware großer 5.0.0  
 Es werden Temperaturen, Mähzeiten, Akkustand und diverse weitere Daten ausgelesen
 Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geändert werden.
 
@@ -27,6 +27,8 @@ Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von di
 
 
 ## Changelog
+#### 2.2.0 (17.07.2018)
+* (MeisterTR) Landroid M wird unterstützt FW > 5.X.X
 #### 2.1.2 (13.04.2018)
 * (MeisterTR) add mower selection, clean up, remove CA
 #### 2.0.1 (31.01.2018)
