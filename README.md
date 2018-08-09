@@ -28,8 +28,8 @@ At least Node 4.X.X must be installed, Node 0.10 and 0.12 are no longer supporte
 -If two mowers are to be integrated, a second instance must be installed, one is selected in the Config mower 0 and in the second mower 1 and so on.
 
 ## Changelog
-#### 2.2.0 (17.07.2018)
-* (MeisterTR) support of Landroid M FW > 5.X.X
+#### 2.5.2 (09.08.2018)
+* (MeisterTR) support of Landroid M FW > 5.X.X add pause change connection 
 #### 2.1.2 (13.04.2018)
 * (MeisterTR) add mower selection, clean up, remove CA
 #### 2.0.1 (31.01.2018)

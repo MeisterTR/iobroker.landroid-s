@@ -27,8 +27,8 @@ Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von di
 
 
 ## Changelog
-#### 2.2.0 (17.07.2018)
-* (MeisterTR) Landroid M wird unterstützt FW > 5.X.X
+#### 2.5.2 (09.08.2018)
+* (MeisterTR) support of Landroid M FW > 5.X.X add pause change connection
 #### 2.1.2 (13.04.2018)
 * (MeisterTR) add mower selection, clean up, remove CA
 #### 2.0.1 (31.01.2018)
