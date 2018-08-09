@@ -2,14 +2,14 @@
 /*jslint node: true */
 "use strict";
 
-// you have to require the utils module and call adapter function
+// main version 2.5.0 (09.08.2018)
+//-------------------------------------------------------
+
 var utils = require(__dirname + '/lib/utils'); // Get common adapter utils
 var adapter = utils.Adapter('landroid-s');
-var LandroidCloud = require(__dirname + '/lib/landroid-cloud-2');
-var landroidS = require(__dirname + '/responses/landroid-s.json');
-
+var mqttCloud = require(__dirname + '/lib/mqttCloud');
 var ip, pin, data, getOptions, error, state;
-var landroid;
+var mower;
 
 var connected = false;
 var pingTimeout = null;
@@ -17,7 +17,6 @@ var firstSet = true;
 var weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 var test = false; // State for create and send Testmessages
 var areas = [];
-//data = landroidS;
 
 
 adapter.on('unload', function (callback) {
@@ -49,12 +48,12 @@ adapter.on('stateChange', function (id, state) {
         }
         //Send Testmessage
         else if ((command == "rawSend")) {
-            landroid.sendMessage(state.val);
+            mower.sendMessage(state.val);
         }
 
         else if ((command == "waitRain")) {
             var val = (isNaN(state.val) || state.val < 0 ? 100 : parseInt(state.val));
-            landroid.sendMessage('{"rd":' + val + '}');
+            mower.sendMessage('{"rd":' + val + '}');
             adapter.log.info("Changed time wait after rain to:" + val);
         }
         else if ((command === "borderCut") || (command === "startTime") || (command === "workTime")) {
@@ -66,6 +65,9 @@ adapter.on('stateChange', function (id, state) {
         else if (command === "startSequence") {
             startSequences(id, state.val);
         }
+        else if (command === "pause") {
+            sendPause(id, state.val);
+        }
         else if (command === "mowTimeExtend") {
             mowTimeEx(id, parseInt(state.val));
         }
@@ -73,7 +75,7 @@ adapter.on('stateChange', function (id, state) {
             var val = (state.val ? 1 : 0);
             var message = data.cfg.sc;
             message.m = val;
-            landroid.sendMessage('{"sc":' + JSON.stringify(message) + '}');
+            mower.sendMessage('{"sc":' + JSON.stringify(message) + '}');
             adapter.log.info("Mow times disabled: " + message.m);
         }
     }
@@ -127,7 +129,7 @@ function changeMowerCfg(id, value) {
     if (sval !== undefined) {
         message[dayID][valID] = sval;
         adapter.log.debug("Mow time change to: " + JSON.stringify(message));
-        landroid.sendMessage('{"sc":{"d":' + JSON.stringify(message) + '}}');
+        mower.sendMessage('{"sc":{"d":' + JSON.stringify(message) + '}}');
 
     }
     adapter.log.debug("test cfg: " + dayID + " valID: " + valID + " val: " + val + " sval: " + sval);
@@ -138,7 +140,7 @@ function mowTimeEx(id, value) {
     var message = data.cfg.sc; // set aktual values
     if (!isNaN(val) && val >= -100 && val <= 100) {
         message.p = val;
-        landroid.sendMessage('{"sc":' + JSON.stringify(message) + '}');
+        mower.sendMessage('{"sc":' + JSON.stringify(message) + '}');
         adapter.log.info("MowerTimeExtend set to : " + message.p);
 
     } else {
@@ -154,7 +156,7 @@ function changeMowerArea(id, value) {
     try {
         if (!isNaN(val) && val >= 0 && val <= 500) {
             message[areaID] = val;
-            landroid.sendMessage('{"mz":' + JSON.stringify(message) + '}');
+            mower.sendMessage('{"mz":' + JSON.stringify(message) + '}');
             adapter.log.info("Change Area " + (areaID + 1) + " : " + JSON.stringify(message));
         }
         else {
@@ -166,6 +168,12 @@ function changeMowerArea(id, value) {
         adapter.log.error("Error while setting mowers areas: " + e);
     }
 }
+function sendPause(id, value) {
+    if (value === true) {
+        mower.sendMessage('{"cmd":2}');
+    }
+}
+
 function startSequences(id, value) {
     var val = value;
     var message = data.cfg.mz; // set aktual values
@@ -185,7 +193,7 @@ function startSequences(id, value) {
                 adapter.log.warn("Array ist too short, filling up with start point 0");
             }
         }
-        landroid.sendMessage('{"mzv":' + JSON.stringify(seq) + '}');
+        mower.sendMessage('{"mzv":' + JSON.stringify(seq) + '}');
         adapter.log.info("new Array is: " + JSON.stringify(seq));
 
     }
@@ -195,9 +203,9 @@ function startSequences(id, value) {
 }
 
 function startMower() {
-    if (state === 1 && error == 0) {
-        landroid.sendMessage('{"cmd":1}'); //start code for mower
-        adapter.log.info("Start Landroid");
+    if ((state === 1 || state === 34)&& error == 0) {
+        mower.sendMessage('{"cmd":1}'); //start code for mower
+        adapter.log.info("Start mower");
     } else {
         adapter.log.warn("Can not start mover because he is not at home or there is an Error please take a look at the mover");
         adapter.setState("mower.state", {
@@ -209,8 +217,8 @@ function startMower() {
 
 function stopMower() {
     if (state === 7 && error == 0) {
-        landroid.sendMessage('{"cmd":3}'); //"Back to home" code for mower
-        adapter.log.info("Landroid going back home");
+        mower.sendMessage('{"cmd":3}'); //"Back to home" code for mower
+        adapter.log.info("mower going back home");
     } else {
         adapter.log.warn("Can not stop mover because he did not mow or theres an error");
         adapter.setState("mower.state", {
@@ -220,7 +228,7 @@ function stopMower() {
     }
 }
 
-function procedeLandroidS() {
+function procedeMower() {
     var Button = adapter.config.enableJson;
     if (true) {
 
@@ -248,6 +256,18 @@ function procedeLandroidS() {
             native: {}
         });
     }
+    adapter.setObjectNotExists('mower.pause', {
+        type: 'state',
+        common: {
+            name: "Pause",
+            type: "boolean",
+            role: "button",
+            read: true,
+            write: true,
+            desc: "Pause the mover",
+        },
+        native: {}
+    });
 
     adapter.setObjectNotExists('mower.totalTime', {
         type: 'state',
@@ -371,7 +391,7 @@ function procedeLandroidS() {
     adapter.setObjectNotExists('mower.status', {
         type: 'state',
         common: {
-            name: "Landroid status",
+            name: "mower status",
             type: "number",
             read: true,
             write: false,
@@ -389,7 +409,8 @@ function procedeLandroidS() {
                 9: "Trapped",
                 10: "Blade blocked", // Not sure what this is
                 11: "Debug",
-                12: "Remote control"
+                12: "Remote control",
+                34: "Pause"
             }
         },
         native: {}
@@ -591,7 +612,7 @@ function evaluateResponse() {
 }
 
 function setStates() {
-    //landroid S set states
+    //mower S set states
     var sequence = [];
 
     if (adapter.config.houerKm) {
@@ -654,7 +675,7 @@ adapter.on('ready', function () {
 
 //Autoupdate Push
 var updateListener = function (status) {
-    if (status) { // We got some data from the Landroid
+    if (status) { // We got some data from the Mower
         clearTimeout(pingTimeout);
         pingTimeout = null;
         if (!connected) {
@@ -679,13 +700,13 @@ function checkStatus() {
             adapter.setState('info.connection', false, true);
         }
     }, 3000);
-    landroid.sendMessage('{}');
+    mower.sendMessage('{}');
 }
 
 function main() {
 
 
-    landroid = new LandroidCloud(adapter);
+    mower = new mqttCloud(adapter);
 
     if (adapter.config.pwd === "PASSWORT") {
 
@@ -697,13 +718,13 @@ function main() {
 
 
 
-        if (firstSet) procedeLandroidS();
+        if (firstSet) procedeMower();
 
 
         adapter.log.debug('Mail address: ' + adapter.config.email);
         adapter.log.debug('Password were set to: ' + adapter.config.pwd);
 
-        landroid.init(updateListener);
+        mower.init(updateListener);
         adapter.subscribeStates('*');
     }
 

@@ -1,8 +1,19 @@
 {
   "common": {
     "name": "landroid-s",
-    "version": "2.2.2",
+    "version": "2.5.2",
     "news": {
+      "2.5.2": {
+        "en": "better device support, added pause button ",
+        "de": "bessere Geräteunterstützung, zusätzliche Pause-Taste",
+        "ru": "улучшенная поддержка устройств, кнопка добавления паузы",
+        "pt": "melhor suporte ao dispositivo, botão de pausa adicionado",
+        "nl": "betere apparaatondersteuning, toegevoegde pauzeknop",
+        "fr": "meilleur support du périphérique, bouton de pause ajouté",
+        "it": "migliore supporto del dispositivo, pulsante di pausa aggiunto",
+        "es": "mejor soporte para el dispositivo, botón de pausa agregado",
+        "pl": "lepsza obsługa urządzeń, dodany przycisk pauzy"
+      },
       "2.2.2": {
         "en": "support of Landroid M FW> 5.0.0",
         "de": "Unterstützung von Landroid M FW> 5.0.0",
