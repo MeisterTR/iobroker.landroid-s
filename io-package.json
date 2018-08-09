@@ -213,7 +213,7 @@
       "_id": "calendar",
       "type": "channel",
       "common": {
-        "name": "calendar",
+        "name": "calendar"
       },
       "native": {}
     },
