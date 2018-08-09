@@ -247,7 +247,7 @@ function procedeMower() {
             common: {
                 name: "Start/Stop",
                 type: "boolean",
-                role: "state",
+                role: "switch.power",
                 read: true,
                 write: true,
                 desc: "Start and stop the mover",
@@ -261,7 +261,7 @@ function procedeMower() {
         common: {
             name: "Pause",
             type: "boolean",
-            role: "button",
+            role: "button.stop",
             read: true,
             write: true,
             desc: "Pause the mover",
@@ -287,7 +287,7 @@ function procedeMower() {
         common: {
             name: "Total mower distance",
             type: "number",
-            role: "value.interval",
+            role: "value.distance",
             unit: "km",
             read: true,
             write: false,
@@ -326,7 +326,7 @@ function procedeMower() {
         common: {
             name: "Battery charge cycle",
             type: "number",
-            role: 'indicator',
+            role: 'value',
             read: true,
             write: false,
             desc: "Show the number of charging cycles"
@@ -338,7 +338,7 @@ function procedeMower() {
         common: {
             name: "Battery voltage",
             type: "number",
-            role: "value.voltage",
+            role: "value",
             unit: "V",
             read: true,
             write: false,
@@ -365,6 +365,7 @@ function procedeMower() {
             name: "Error code",
             type: "number",
             read: true,
+            role: "value",
             write: false,
             desc: "Error code",
             states: {
@@ -393,6 +394,7 @@ function procedeMower() {
         common: {
             name: "mower status",
             type: "number",
+            role: "value",
             read: true,
             write: false,
             desc: "Current status of lawn mower",
@@ -423,6 +425,7 @@ function procedeMower() {
         common: {
             name: "Start sequence",
             type: "sting",
+            role: "json",
             read: true,
             write: true,
             desc: "Sequence of area to start from"
@@ -512,6 +515,7 @@ function procedeMower() {
             name: "Wifi quality",
             type: "number",
             read: true,
+            role: "value",
             unit: "dBm",
             desc: "Prozent of Wifi quality"
         },
@@ -532,6 +536,7 @@ function procedeMower() {
         common: {
             name: "Mowing times exceed",
             type: "number",
+            role: "level",
             read: true,
             write: true,
             unit: "%",
@@ -547,6 +552,7 @@ function procedeMower() {
             common: {
                 name: "raw send",
                 type: "sting",
+                role: "json",
                 read: true,
                 write: true,
                 desc: "object for sending raw messages to the mower"
@@ -558,6 +564,7 @@ function procedeMower() {
             common: {
                 name: "raw response",
                 type: "sting",
+                role: "json",
                 read: true,
                 write: false,
                 desc: "Display the raw message from the mower"

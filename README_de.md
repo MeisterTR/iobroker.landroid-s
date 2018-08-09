@@ -1,10 +1,10 @@
 ![Logo](admin/landroid-s2.png)
+
 ioBroker.landroid-s
 =============
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.landroid-s.svg)](https://www.npmjs.com/package/iobroker.landroid-s)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.landroid-s.svg)](https://www.npmjs.com/package/iobroker.landroid-s)
-[![bitHound Overall Score](https://www.bithound.io/github/MeisterTR/ioBroker.landroid-s/badges/score.svg)](https://www.bithound.io/github/MeisterTR/iobroker.landroid-s)
 
 [![NPM](https://nodei.co/npm/iobroker.landroid-s.png?downloads=true)](https://nodei.co/npm/iobroker.landroid-s/)
 
@@ -27,7 +27,7 @@ Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von di
 
 
 ## Changelog
-#### 2.5.2 (09.08.2018)
+#### 2.5.4 (09.08.2018)
 * (MeisterTR) support of Landroid M FW > 5.X.X add pause change connection
 #### 2.1.2 (13.04.2018)
 * (MeisterTR) add mower selection, clean up, remove CA
