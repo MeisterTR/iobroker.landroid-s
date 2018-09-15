@@ -412,6 +412,7 @@ function procedeMower() {
                 10: "Blade blocked", // Not sure what this is
                 11: "Debug",
                 12: "Remote control",
+                30: "Going home",
                 34: "Pause"
             }
         },
