@@ -413,6 +413,7 @@ function procedeMower() {
                 11: "Debug",
                 12: "Remote control",
                 30: "Going home",
+                33: "Searching zone",
                 34: "Pause"
             }
         },
