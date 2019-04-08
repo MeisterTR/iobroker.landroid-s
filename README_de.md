@@ -16,8 +16,11 @@ Dieser Adapter verbindet IoBroker mit deinem Landroid S oder Landroid M mit Firm
 Es werden Temperaturen, Mähzeiten, Akkustand und diverse weitere Daten ausgelesen
 Ebenso kann er durch den Adapter gesteuert werden und die Konfiguration geändert werden.
 
+<h1>Versionen unter 2.5.5 werden vom Worx Server nicht mehr unterstützt!!!
+
 ## Installation
 Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von diesem Adapter nicht mehr unterstützt.
+
 
 ## Einstellungen
 - Bei E-mail und Passwort müssen die Daten eingeben werden, mit denen man bei Worx registriert ist.
@@ -27,6 +30,8 @@ Es muss mindestens Node 4.X.X Installiert sein, Node 0.10 und 0.12 werden von di
 
 
 ## Changelog
+#### 2.5.5(08.04.2019)
+* (MeisterTR) Api change from v1 to v2
 #### 2.5.4 (09.08.2018)
 * (MeisterTR) support of Landroid M FW > 5.X.X add pause change connection
 #### 2.1.2 (13.04.2018)

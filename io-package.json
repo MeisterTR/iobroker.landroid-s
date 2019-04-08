@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "landroid-s",
-    "version": "2.5.4",
+    "version": "2.5.5",
     "news": {
+      "2.5.5": {
+        "en": "Api changed!",
+        "de": "Api hat sich geändert!",
+        "ru": "Api изменился!",
+        "pt": "Api mudou!",
+        "nl": "Api veranderd!",
+        "fr": "Api a changé!",
+        "it": "Api è cambiato!",
+        "es": "Api cambió!",
+        "pl": "Api się zmienił!",
+        "zh-cn": "Api改变了！"
+      },
       "2.5.4": {
         "en": "better device support, added pause button ",
         "de": "bessere Geräteunterstützung, zusätzliche Pause-Taste",
