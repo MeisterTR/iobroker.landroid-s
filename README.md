@@ -1,7 +1,5 @@
 ![Logo](admin/landroid-s2.png)
-
-ioBroker.landroid-s
-=============
+# ioBroker.landroid-s
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.landroid-s.svg)](https://www.npmjs.com/package/iobroker.landroid-s)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.landroid-s.svg)](https://www.npmjs.com/package/iobroker.landroid-s)
@@ -18,7 +16,7 @@ This adapter connects IoBroker with your Landroid S Model or Landroid M with fir
 Temperatures, mowing times, battery level and various other data are read out from the mower
 The adapter can control the mower and you can change config params like mowtimes.
 
-<h1>Version lower 2.5.5 are no more supported!!!
+<h4>Version lower 2.5.5 are no more supported!!!</h4>
 
 ## installation
 At least Node 4.X.X must be installed, Node 0.10 and 0.12 are no longer supported by this adapter.
@@ -71,7 +69,7 @@ At least Node 4.X.X must be installed, Node 0.10 and 0.12 are no longer supporte
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2017 MeisterTR <meistertr.smarthome@gmail.com>
+Copyright (c) 2017-2019 MeisterTR <meistertr.smarthome@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
