@@ -18,52 +18,48 @@ The adapter can control the mower and you can change config params like mowtimes
 
 <h4>Version lower 2.5.5 are no more supported!!!</h4>
 
-## installation
-At least Node 4.X.X must be installed, Node 0.10 and 0.12 are no longer supported by this adapter.
-
 ## settings
 - to connect to the mower type in email and password from your worx account in the Config.
 
-
 ## second mower
--If two mowers are to be integrated, a second instance must be installed, one is selected in the Config mower 0 and in the second mower 1 and so on.
+- If two mowers are to be integrated, a second instance must be installed, one is selected in the Config mower 0 and in the second mower 1 and so on.
 
 ## Changelog
-#### 2.5.5(08.04.2019)
+### 2.5.5(08.04.2019)
 * (MeisterTR) Api change from v1 to v2
-#### 2.5.4 (09.08.2018)
+### 2.5.4 (09.08.2018)
 * (MeisterTR) support of Landroid M FW > 5.X.X add pause change connection 
-#### 2.1.2 (13.04.2018)
+### 2.1.2 (13.04.2018)
 * (MeisterTR) add mower selection, clean up, remove CA
-#### 2.0.1 (31.01.2018)
+### 2.0.1 (31.01.2018)
 * (MeisterTR) connection problem with new mower fixed 
-#### 2.0.0 (31.01.2018)
+### 2.0.0 (31.01.2018)
 * (MeisterTR) admin3, del Polling
-#### 1.1.7 (09.10.2017)
+### 1.1.7 (09.10.2017)
 * (MeisterTR) hard coded guest-token
 * (MeisterTR) change cloud connection need no OpenSSL
 * (MeisterTR) Serverselction automatic form Worx Server
 * (MeisterTR) No Mac adress is needed
-#### 1.0.4 (18.09.2017)
+### 1.0.4 (18.09.2017)
 * (MeisterTR) Update dependencies, no more error Messages on install
-#### 1.0.3 (08.09.2017)
+### 1.0.3 (08.09.2017)
 * (MeisterTR) change Values from vis did not work (Fixed)
 * (MeisterTR) changeing path from OpenSSL.exe on Windows now in config
 * (MeisterTR) chatch errors on start if config is not set
 * (MeisterTR) some other changes
-#### 0.3.1 (12.08.2017)
+### 0.3.1 (12.08.2017)
 * (MeisterTR) bugfix cound not set bordercut to false
 * (MeisterTR) add checkbox for m and min.
 * (MeisterTR) add rawdata, chargecycle and actualArea
-#### 0.2.5
+### 0.2.5
 * (MeisterTR) now every parameter can be configure
-#### 0.2.3
+### 0.2.3
 * (MeisterTR) add areas, supporting change areas
-#### 0.2.2
+### 0.2.2
 * (MeisterTR) supported change of mowing times and error catching
-#### 0.1.2
+### 0.1.2
 * (MeisterTR) add mowing data
-#### 0.0.1
+### 0.0.1
 * (MeisterTR) initial release
  
 ## License
