@@ -359,6 +359,45 @@ function procedeMower() {
         },
         native: {}
     });
+    adapter.setObjectNotExists('mower.pitch', {
+        type: 'state',
+        common: {
+            name: "pitch",
+            type: "number",
+            role: "value.angle",
+            unit: "°",
+            read: true,
+            write: false,
+            desc: "Transverse axis (pitch) of mower"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('mower.roll', {
+        type: 'state',
+        common: {
+            name: "roll",
+            type: "number",
+            role: "value.angle",
+            unit: "°",
+            read: true,
+            write: false,
+            desc: "Longitudinal axis (roll) of mower"
+        },
+        native: {}
+    });
+    adapter.setObjectNotExists('mower.yaw', {
+        type: 'state',
+        common: {
+            name: "yaw",
+            type: "number",
+            role: "value.angle",
+            unit: "°",
+            read: true,
+            write: false,
+            desc: "Vertical axis (yaw) of mower"
+        },
+        native: {}
+    });
     adapter.setObjectNotExists('mower.error', {
         type: 'state',
         common: {
@@ -645,6 +684,9 @@ function setStates() {
     adapter.setState("mower.status", { val: (data.dat && data.dat.ls ? data.dat.ls : 0), ack: true });
     adapter.setState("info.wifiQuality", { val: (data.dat && data.dat.rsi ? data.dat.rsi : 0), ack: true });
 
+    adapter.setState("mower.pitch", { val: (data.dat && data.dat.dmp && data.dat.dmp[0] ? data.dat.dmp[0] : 0), ack: true });
+    adapter.setState("mower.roll",  { val: (data.dat && data.dat.dmp && data.dat.dmp[1] ? data.dat.dmp[1] : 0), ack: true });
+    adapter.setState("mower.yaw",   { val: (data.dat && data.dat.dmp && data.dat.dmp[2] ? data.dat.dmp[2] : 0), ack: true });
 
     adapter.setState("calendar.mowerActive", { val: (data.cfg.sc && data.cfg.sc.m ? true : false), ack: true });
     adapter.setState("calendar.mowTimeExtend", { val: (data.cfg.sc && data.cfg.sc.p ? data.cfg.sc.p : 0), ack: true });
